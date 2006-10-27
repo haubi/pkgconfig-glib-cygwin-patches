@@ -6,23 +6,23 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.5.20-1 (20060604)
-  libiconv2-1.9.2-2
-  libintl3-0.14.5-1
+  cygwin-1.5.21-2
+  libiconv2-1.11-1
+  libintl8-0.15-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.20-1 (20060604)
-  autoconf2.5-2.59-2
-  automake1.9-1.9.6-1
-  cygport-0.2.0-1
+  cygwin-1.5.21-2
+  autoconf2.5-2.60-1
+  automake1.7-1.7.9-1
+  cygport-0.2.6-1
   gawk-3.1.5-2
   gcc-core-3.4.4-1
-  gtk-doc-1.5-1
+  gtk-doc-1.7-1
   libtool1.5-1.5.22-1
-  make-3.80-1
+  make-3.81-1
   pkg-config-0.20-1
-  sed-4.1.4-1
+  sed-4.1.5-1
 
 Canonical website:
   http://www.gtk.org/
@@ -34,39 +34,41 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.10.3-X-src.tar.bz2
+  unpack glib2-2.12.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.10.3-X.cygport all
+  cygport ./glib2-2.12.4-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.10.3-X-src.tar.bz2
-  /usr/src/glib2-2.10.3-X.tar.bz2
-  /usr/src/glib2-devel-2.10.3-X.tar.bz2
-  /usr/src/glib2-doc-2.10.3-X.tar.bz2
+  /usr/src/glib2-2.12.4-X-src.tar.bz2
+  /usr/src/glib2-2.12.4-X.tar.bz2
+  /usr/src/glib2-devel-2.12.4-X.tar.bz2
+  /usr/src/glib2-doc-2.12.4-X.tar.bz2
 
 -------------------------------------------
 
-Files included in the main package:
+Files included in the binary packages:
 
+(glib2)
   /usr/bin/cygglib-2.0-0.dll
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.10.3.README
-  /usr/share/doc/glib2-2.10.3/AUTHORS
-  /usr/share/doc/glib2-2.10.3/COPYING
-  /usr/share/doc/glib2-2.10.3/ChangeLog
-  /usr/share/doc/glib2-2.10.3/INSTALL
-  /usr/share/doc/glib2-2.10.3/NEWS
-  /usr/share/doc/glib2-2.10.3/README
+  /usr/share/doc/Cygwin/glib2-2.12.4.README
+  /usr/share/doc/glib2-2.12.4/AUTHORS
+  /usr/share/doc/glib2-2.12.4/COPYING
+  /usr/share/doc/glib2-2.12.4/ChangeLog
+  /usr/share/doc/glib2-2.12.4/INSTALL
+  /usr/share/doc/glib2-2.12.4/NEWS
+  /usr/share/doc/glib2-2.12.4/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/az/LC_MESSAGES/glib20.mo
   /usr/share/locale/be/LC_MESSAGES/glib20.mo
   /usr/share/locale/bg/LC_MESSAGES/glib20.mo
   /usr/share/locale/bn/LC_MESSAGES/glib20.mo
+  /usr/share/locale/bn_IN/LC_MESSAGES/glib20.mo
   /usr/share/locale/bs/LC_MESSAGES/glib20.mo
   /usr/share/locale/ca/LC_MESSAGES/glib20.mo
   /usr/share/locale/cs/LC_MESSAGES/glib20.mo
@@ -91,6 +93,7 @@ Files included in the main package:
   /usr/share/locale/hi/LC_MESSAGES/glib20.mo
   /usr/share/locale/hr/LC_MESSAGES/glib20.mo
   /usr/share/locale/hu/LC_MESSAGES/glib20.mo
+  /usr/share/locale/hy/LC_MESSAGES/glib20.mo
   /usr/share/locale/id/LC_MESSAGES/glib20.mo
   /usr/share/locale/is/LC_MESSAGES/glib20.mo
   /usr/share/locale/it/LC_MESSAGES/glib20.mo
@@ -108,7 +111,6 @@ Files included in the main package:
   /usr/share/locale/ne/LC_MESSAGES/glib20.mo
   /usr/share/locale/nl/LC_MESSAGES/glib20.mo
   /usr/share/locale/nn/LC_MESSAGES/glib20.mo
-  /usr/share/locale/no/LC_MESSAGES/glib20.mo
   /usr/share/locale/or/LC_MESSAGES/glib20.mo
   /usr/share/locale/pa/LC_MESSAGES/glib20.mo
   /usr/share/locale/pl/LC_MESSAGES/glib20.mo
@@ -139,8 +141,8 @@ Files included in the main package:
   /usr/share/locale/zh_HK/LC_MESSAGES/glib20.mo
   /usr/share/locale/zh_TW/LC_MESSAGES/glib20.mo
 
-Files included in the devel package:
 
+(glib2-devel)
   /usr/bin/glib-genmarshal.exe
   /usr/bin/glib-gettextize
   /usr/bin/glib-mkenums
@@ -152,6 +154,8 @@ Files included in the devel package:
   /usr/include/glib-2.0/glib/gasyncqueue.h
   /usr/include/glib-2.0/glib/gatomic.h
   /usr/include/glib-2.0/glib/gbacktrace.h
+  /usr/include/glib-2.0/glib/gbase64.h
+  /usr/include/glib-2.0/glib/gbookmarkfile.h
   /usr/include/glib-2.0/glib/gcache.h
   /usr/include/glib-2.0/glib/gcompletion.h
   /usr/include/glib-2.0/glib/gconvert.h
@@ -245,15 +249,16 @@ Files included in the devel package:
   /usr/share/man/man1/glib-mkenums.1.gz
   /usr/share/man/man1/gobject-query.1.gz
 
-Files included in the doc package:
-
+(glib2-doc)
   /usr/share/gtk-doc/html/glib/file-name-encodings.png
   /usr/share/gtk-doc/html/glib/glib-Arrays.html
   /usr/share/gtk-doc/html/glib/glib-Asynchronous-Queues.html
   /usr/share/gtk-doc/html/glib/glib-Atomic-Operations.html
   /usr/share/gtk-doc/html/glib/glib-Automatic-String-Completion.html
   /usr/share/gtk-doc/html/glib/glib-Balanced-Binary-Trees.html
+  /usr/share/gtk-doc/html/glib/glib-Base64-Encoding.html
   /usr/share/gtk-doc/html/glib/glib-Basic-Types.html
+  /usr/share/gtk-doc/html/glib/glib-Bookmark-file-parser.html
   /usr/share/gtk-doc/html/glib/glib-Byte-Arrays.html
   /usr/share/gtk-doc/html/glib/glib-Byte-Order-Macros.html
   /usr/share/gtk-doc/html/glib/glib-Caches.html
@@ -330,6 +335,7 @@ Files included in the doc package:
   /usr/share/gtk-doc/html/glib/ix05.html
   /usr/share/gtk-doc/html/glib/ix06.html
   /usr/share/gtk-doc/html/glib/ix07.html
+  /usr/share/gtk-doc/html/glib/ix08.html
   /usr/share/gtk-doc/html/glib/left.png
   /usr/share/gtk-doc/html/glib/mainloop-states.gif
   /usr/share/gtk-doc/html/glib/right.png
@@ -389,6 +395,7 @@ Files included in the doc package:
   /usr/share/gtk-doc/html/gobject/ix05.html
   /usr/share/gtk-doc/html/gobject/ix06.html
   /usr/share/gtk-doc/html/gobject/ix07.html
+  /usr/share/gtk-doc/html/gobject/ix08.html
   /usr/share/gtk-doc/html/gobject/left.png
   /usr/share/gtk-doc/html/gobject/pr01.html
   /usr/share/gtk-doc/html/gobject/pt01.html
@@ -408,6 +415,9 @@ Files included in the doc package:
 ------------------
 
 Port Notes:
+
+----- version 2.12.4-1 -----
+Version bump for GNOME 2.16.  Requires libintl8.
 
 ----- version 2.10.3-1 -----
 Version bump.
