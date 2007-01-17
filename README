@@ -13,7 +13,7 @@ Runtime requirements:
 Build requirements:
 (besides corresponding -devel packages)
   cygwin-1.5.23-2
-  autoconf2.5-2.60-2
+  autoconf2.5-2.61-1
   automake1.7-1.7.9-2
   cygport-0.2.8-1
   gawk-3.1.5-4
@@ -34,17 +34,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.12.7-X-src.tar.bz2
+  unpack glib2-2.12.9-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.12.7-X.cygport all
+  cygport ./glib2-2.12.9-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.12.7-X-src.tar.bz2
-  /usr/src/glib2-2.12.7-X.tar.bz2
-  /usr/src/glib2-devel-2.12.7-X.tar.bz2
-  /usr/src/glib2-doc-2.12.7-X.tar.bz2
+  /usr/src/glib2-2.12.9-X-src.tar.bz2
+  /usr/src/glib2-2.12.9-X.tar.bz2
+  /usr/src/glib2-devel-2.12.9-X.tar.bz2
+  /usr/src/glib2-doc-2.12.9-X.tar.bz2
 
 -------------------------------------------
 
@@ -55,13 +55,13 @@ Files included in the binary packages:
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.12.7.README
-  /usr/share/doc/glib2-2.12.7/AUTHORS
-  /usr/share/doc/glib2-2.12.7/COPYING
-  /usr/share/doc/glib2-2.12.7/ChangeLog
-  /usr/share/doc/glib2-2.12.7/INSTALL
-  /usr/share/doc/glib2-2.12.7/NEWS
-  /usr/share/doc/glib2-2.12.7/README
+  /usr/share/doc/Cygwin/glib2-2.12.9.README
+  /usr/share/doc/glib2-2.12.9/AUTHORS
+  /usr/share/doc/glib2-2.12.9/COPYING
+  /usr/share/doc/glib2-2.12.9/ChangeLog
+  /usr/share/doc/glib2-2.12.9/INSTALL
+  /usr/share/doc/glib2-2.12.9/NEWS
+  /usr/share/doc/glib2-2.12.9/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/az/LC_MESSAGES/glib20.mo
@@ -415,6 +415,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.12.9-1 -----
+Version bump.
 
 ----- version 2.12.7-1 -----
 Version bump.
