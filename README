@@ -18,7 +18,7 @@ Build requirements:
   cygport-0.2.11-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
-  gtk-doc-1.7-1
+  gtk-doc-1.8-1
   libtool1.5-1.5.23a-2
   make-3.81-1
   pkg-config-0.21-1
@@ -34,17 +34,17 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.12.11-X-src.tar.bz2
+  unpack glib2-2.12.12-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.12.11-X.cygport all
+  cygport ./glib2-2.12.12-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.12.11-X-src.tar.bz2
-  /usr/src/glib2-2.12.11-X.tar.bz2
-  /usr/src/glib2-devel-2.12.11-X.tar.bz2
-  /usr/src/glib2-doc-2.12.11-X.tar.bz2
+  /usr/src/glib2-2.12.12-X-src.tar.bz2
+  /usr/src/glib2-2.12.12-X.tar.bz2
+  /usr/src/glib2-devel-2.12.12-X.tar.bz2
+  /usr/src/glib2-doc-2.12.12-X.tar.bz2
 
 -------------------------------------------
 
@@ -55,13 +55,13 @@ Files included in the binary packages:
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.12.11.README
-  /usr/share/doc/glib2-2.12.11/AUTHORS
-  /usr/share/doc/glib2-2.12.11/COPYING
-  /usr/share/doc/glib2-2.12.11/ChangeLog
-  /usr/share/doc/glib2-2.12.11/INSTALL
-  /usr/share/doc/glib2-2.12.11/NEWS
-  /usr/share/doc/glib2-2.12.11/README
+  /usr/share/doc/Cygwin/glib2-2.12.12.README
+  /usr/share/doc/glib2-2.12.12/AUTHORS
+  /usr/share/doc/glib2-2.12.12/COPYING
+  /usr/share/doc/glib2-2.12.12/ChangeLog
+  /usr/share/doc/glib2-2.12.12/INSTALL
+  /usr/share/doc/glib2-2.12.12/NEWS
+  /usr/share/doc/glib2-2.12.12/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/az/LC_MESSAGES/glib20.mo
@@ -415,6 +415,11 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.12.12-1 -----
+Version bump.
+Fixed _g_module_build_path to prevent adding ".dll" suffix 
+if already present.
 
 ----- version 2.12.11-1 -----
 Version bump.
