@@ -44,7 +44,6 @@ This will create:
   /usr/src/glib2-2.12.12-X-src.tar.bz2
   /usr/src/glib2-2.12.12-X.tar.bz2
   /usr/src/glib2-devel-2.12.12-X.tar.bz2
-  /usr/src/glib2-doc-2.12.12-X.tar.bz2
 
 -------------------------------------------
 
@@ -140,7 +139,6 @@ Files included in the binary packages:
   /usr/share/locale/zh_CN/LC_MESSAGES/glib20.mo
   /usr/share/locale/zh_HK/LC_MESSAGES/glib20.mo
   /usr/share/locale/zh_TW/LC_MESSAGES/glib20.mo
-
 
 (glib2-devel)
   /usr/bin/glib-genmarshal.exe
@@ -244,12 +242,6 @@ Files included in the binary packages:
   /usr/share/aclocal/glib-gettext.m4
   /usr/share/glib-2.0/gettext/mkinstalldirs
   /usr/share/glib-2.0/gettext/po/Makefile.in.in
-  /usr/share/man/man1/glib-genmarshal.1.gz
-  /usr/share/man/man1/glib-gettextize.1.gz
-  /usr/share/man/man1/glib-mkenums.1.gz
-  /usr/share/man/man1/gobject-query.1.gz
-
-(glib2-doc)
   /usr/share/gtk-doc/html/glib/file-name-encodings.png
   /usr/share/gtk-doc/html/glib/glib-Arrays.html
   /usr/share/gtk-doc/html/glib/glib-Asynchronous-Queues.html
@@ -411,10 +403,18 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gobject/tools-gtkdoc.html
   /usr/share/gtk-doc/html/gobject/tools-refdb.html
   /usr/share/gtk-doc/html/gobject/up.png
+  /usr/share/man/man1/glib-genmarshal.1.gz
+  /usr/share/man/man1/glib-gettextize.1.gz
+  /usr/share/man/man1/glib-mkenums.1.gz
+  /usr/share/man/man1/gobject-query.1.gz
 
 ------------------
 
 Port Notes:
+
+----- version 2.12.12-2 -----
+Fixed _g_module_symbol to load symbols of dependencies, see
+http://bugzilla.gnome.org/show_bug.cgi?id=449562 for details.
 
 ----- version 2.12.12-1 -----
 Version bump.
