@@ -9,16 +9,17 @@ Runtime requirements:
   cygwin-1.5.24-2
   libiconv2-1.11-1
   libintl8-0.15-1
+  libpcre0-7.4-2
 
 Build requirements:
 (besides corresponding -devel packages)
   cygwin-1.5.24-2
   autoconf2.5-2.61-1
   automake1.7-1.7.9-2
-  cygport-0.3.5-1
+  cygport-0.3.7-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
-  gtk-doc-1.8-1
+  gtk-doc-1.9-1
   libtool1.5-1.5.23a-2
   make-3.81-1
   pkg-config-0.21-1
@@ -34,16 +35,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.12.12-X-src.tar.bz2
+  unpack glib2-2.14.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.12.12-X.cygport all
+  cygport ./glib2-2.14.4-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.12.12-X-src.tar.bz2
-  /usr/src/glib2-2.12.12-X.tar.bz2
-  /usr/src/glib2-devel-2.12.12-X.tar.bz2
+  /usr/src/glib2-2.14.4-X-src.tar.bz2
+  /usr/src/glib2-2.14.4-X.tar.bz2
+  /usr/src/glib2-devel-2.14.4-X.tar.bz2
 
 -------------------------------------------
 
@@ -54,17 +55,21 @@ Files included in the binary packages:
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.12.12.README
-  /usr/share/doc/glib2-2.12.12/AUTHORS
-  /usr/share/doc/glib2-2.12.12/COPYING
-  /usr/share/doc/glib2-2.12.12/ChangeLog
-  /usr/share/doc/glib2-2.12.12/INSTALL
-  /usr/share/doc/glib2-2.12.12/NEWS
-  /usr/share/doc/glib2-2.12.12/README
+  /usr/share/doc/Cygwin/glib2-2.14.4.README
+  /usr/share/doc/glib2-2.14.4/AUTHORS
+  /usr/share/doc/glib2-2.14.4/COPYING
+  /usr/share/doc/glib2-2.14.4/ChangeLog
+  /usr/share/doc/glib2-2.14.4/HACKING
+  /usr/share/doc/glib2-2.14.4/INSTALL
+  /usr/share/doc/glib2-2.14.4/MAINTAINERS
+  /usr/share/doc/glib2-2.14.4/NEWS
+  /usr/share/doc/glib2-2.14.4/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
+  /usr/share/locale/as/LC_MESSAGES/glib20.mo
   /usr/share/locale/az/LC_MESSAGES/glib20.mo
   /usr/share/locale/be/LC_MESSAGES/glib20.mo
+  /usr/share/locale/be@latin/LC_MESSAGES/glib20.mo
   /usr/share/locale/bg/LC_MESSAGES/glib20.mo
   /usr/share/locale/bn/LC_MESSAGES/glib20.mo
   /usr/share/locale/bn_IN/LC_MESSAGES/glib20.mo
@@ -98,10 +103,12 @@ Files included in the binary packages:
   /usr/share/locale/it/LC_MESSAGES/glib20.mo
   /usr/share/locale/ja/LC_MESSAGES/glib20.mo
   /usr/share/locale/ka/LC_MESSAGES/glib20.mo
+  /usr/share/locale/kn/LC_MESSAGES/glib20.mo
   /usr/share/locale/ko/LC_MESSAGES/glib20.mo
   /usr/share/locale/ku/LC_MESSAGES/glib20.mo
   /usr/share/locale/lt/LC_MESSAGES/glib20.mo
   /usr/share/locale/lv/LC_MESSAGES/glib20.mo
+  /usr/share/locale/mg/LC_MESSAGES/glib20.mo
   /usr/share/locale/mk/LC_MESSAGES/glib20.mo
   /usr/share/locale/ml/LC_MESSAGES/glib20.mo
   /usr/share/locale/mn/LC_MESSAGES/glib20.mo
@@ -110,6 +117,7 @@ Files included in the binary packages:
   /usr/share/locale/ne/LC_MESSAGES/glib20.mo
   /usr/share/locale/nl/LC_MESSAGES/glib20.mo
   /usr/share/locale/nn/LC_MESSAGES/glib20.mo
+  /usr/share/locale/oc/LC_MESSAGES/glib20.mo
   /usr/share/locale/or/LC_MESSAGES/glib20.mo
   /usr/share/locale/pa/LC_MESSAGES/glib20.mo
   /usr/share/locale/pl/LC_MESSAGES/glib20.mo
@@ -184,8 +192,10 @@ Files included in the binary packages:
   /usr/include/glib-2.0/glib/gquark.h
   /usr/include/glib-2.0/glib/gqueue.h
   /usr/include/glib-2.0/glib/grand.h
+  /usr/include/glib-2.0/glib/gregex.h
   /usr/include/glib-2.0/glib/grel.h
   /usr/include/glib-2.0/glib/gscanner.h
+  /usr/include/glib-2.0/glib/gsequence.h
   /usr/include/glib-2.0/glib/gshell.h
   /usr/include/glib-2.0/glib/gslice.h
   /usr/include/glib-2.0/glib/gslist.h
@@ -281,10 +291,12 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/glib-Miscellaneous-Utility-Functions.html
   /usr/share/gtk-doc/html/glib/glib-N-ary-Trees.html
   /usr/share/gtk-doc/html/glib/glib-Numerical-Definitions.html
+  /usr/share/gtk-doc/html/glib/glib-Perl-compatible-regular-expressions.html
   /usr/share/gtk-doc/html/glib/glib-Pointer-Arrays.html
   /usr/share/gtk-doc/html/glib/glib-Quarks.html
   /usr/share/gtk-doc/html/glib/glib-Random-Numbers.html
   /usr/share/gtk-doc/html/glib/glib-Relations-and-Tuples.html
+  /usr/share/gtk-doc/html/glib/glib-Sequences.html
   /usr/share/gtk-doc/html/glib/glib-Shell-related-Utilities.html
   /usr/share/gtk-doc/html/glib/glib-Simple-XML-Subset-Parser.html
   /usr/share/gtk-doc/html/glib/glib-Singly-Linked-Lists.html
@@ -311,6 +323,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/glib-data-types.html
   /usr/share/gtk-doc/html/glib/glib-fundamentals.html
   /usr/share/gtk-doc/html/glib/glib-gettextize.html
+  /usr/share/gtk-doc/html/glib/glib-regex-syntax.html
   /usr/share/gtk-doc/html/glib/glib-resources.html
   /usr/share/gtk-doc/html/glib/glib-running.html
   /usr/share/gtk-doc/html/glib/glib-utilities.html
@@ -328,6 +341,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/ix06.html
   /usr/share/gtk-doc/html/glib/ix07.html
   /usr/share/gtk-doc/html/glib/ix08.html
+  /usr/share/gtk-doc/html/glib/ix09.html
   /usr/share/gtk-doc/html/glib/left.png
   /usr/share/gtk-doc/html/glib/mainloop-states.gif
   /usr/share/gtk-doc/html/glib/right.png
@@ -336,13 +350,13 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/up.png
   /usr/share/gtk-doc/html/gobject/GTypeModule.html
   /usr/share/gtk-doc/html/gobject/GTypePlugin.html
-  /usr/share/gtk-doc/html/gobject/ch01.html
   /usr/share/gtk-doc/html/gobject/ch01s02.html
-  /usr/share/gtk-doc/html/gobject/ch02.html
   /usr/share/gtk-doc/html/gobject/ch06s03.html
   /usr/share/gtk-doc/html/gobject/ch07s02.html
   /usr/share/gtk-doc/html/gobject/ch07s03.html
   /usr/share/gtk-doc/html/gobject/chapter-gobject.html
+  /usr/share/gtk-doc/html/gobject/chapter-gtype.html
+  /usr/share/gtk-doc/html/gobject/chapter-intro.html
   /usr/share/gtk-doc/html/gobject/chapter-signal.html
   /usr/share/gtk-doc/html/gobject/glib-genmarshal.html
   /usr/share/gtk-doc/html/gobject/glib-mkenums.html
@@ -388,6 +402,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gobject/ix06.html
   /usr/share/gtk-doc/html/gobject/ix07.html
   /usr/share/gtk-doc/html/gobject/ix08.html
+  /usr/share/gtk-doc/html/gobject/ix09.html
   /usr/share/gtk-doc/html/gobject/left.png
   /usr/share/gtk-doc/html/gobject/pr01.html
   /usr/share/gtk-doc/html/gobject/pt01.html
@@ -411,6 +426,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.14.4-1 -----
+Version bump for GNOME 2.20.  Depends on >=pcre-7.4-2.
 
 ----- version 2.12.13-1 -----
 Version bump.
