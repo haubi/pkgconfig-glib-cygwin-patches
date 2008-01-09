@@ -35,16 +35,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.14.4-X-src.tar.bz2
+  unpack glib2-2.14.5-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.14.4-X.cygport all
+  cygport ./glib2-2.14.5-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.14.4-X-src.tar.bz2
-  /usr/src/glib2-2.14.4-X.tar.bz2
-  /usr/src/glib2-devel-2.14.4-X.tar.bz2
+  /usr/src/glib2-2.14.5-X-src.tar.bz2
+  /usr/src/glib2-2.14.5-X.tar.bz2
+  /usr/src/glib2-devel-2.14.5-X.tar.bz2
 
 -------------------------------------------
 
@@ -55,15 +55,15 @@ Files included in the binary packages:
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.14.4.README
-  /usr/share/doc/glib2-2.14.4/AUTHORS
-  /usr/share/doc/glib2-2.14.4/COPYING
-  /usr/share/doc/glib2-2.14.4/ChangeLog
-  /usr/share/doc/glib2-2.14.4/HACKING
-  /usr/share/doc/glib2-2.14.4/INSTALL
-  /usr/share/doc/glib2-2.14.4/MAINTAINERS
-  /usr/share/doc/glib2-2.14.4/NEWS
-  /usr/share/doc/glib2-2.14.4/README
+  /usr/share/doc/Cygwin/glib2-2.14.5.README
+  /usr/share/doc/glib2-2.14.5/AUTHORS
+  /usr/share/doc/glib2-2.14.5/COPYING
+  /usr/share/doc/glib2-2.14.5/ChangeLog
+  /usr/share/doc/glib2-2.14.5/HACKING
+  /usr/share/doc/glib2-2.14.5/INSTALL
+  /usr/share/doc/glib2-2.14.5/MAINTAINERS
+  /usr/share/doc/glib2-2.14.5/NEWS
+  /usr/share/doc/glib2-2.14.5/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -426,6 +426,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.14.5-1 -----
+Version bump for GNOME 2.20.3.
 
 ----- version 2.14.4-1 -----
 Version bump for GNOME 2.20.  Depends on >=pcre-7.4-2.
