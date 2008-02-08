@@ -6,18 +6,17 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.5.24-2
+  cygwin-1.5.25-7
   libiconv2-1.11-1
   libintl8-0.15-1
-  libpcre0-7.4-2
+  libpcre0-7.6-1
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.24-2
   autoconf2.5-2.61-1
   automake1.7-1.7.9-2
   cygport-0.3.7-1
-  gawk-3.1.5-4
+  gawk-3.1.6-1
   gcc-core-3.4.4-3
   gtk-doc-1.9-1
   libtool1.5-1.5.23a-2
@@ -35,16 +34,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.14.5-X-src.tar.bz2
+  unpack glib2-2.14.6-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.14.5-X.cygport all
+  cygport ./glib2-2.14.6-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.14.5-X-src.tar.bz2
-  /usr/src/glib2-2.14.5-X.tar.bz2
-  /usr/src/glib2-devel-2.14.5-X.tar.bz2
+  /usr/src/glib2-2.14.6-X-src.tar.bz2
+  /usr/src/glib2-2.14.6-X.tar.bz2
+  /usr/src/glib2-devel-2.14.6-X.tar.bz2
 
 -------------------------------------------
 
@@ -55,15 +54,15 @@ Files included in the binary packages:
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.14.5.README
-  /usr/share/doc/glib2-2.14.5/AUTHORS
-  /usr/share/doc/glib2-2.14.5/COPYING
-  /usr/share/doc/glib2-2.14.5/ChangeLog
-  /usr/share/doc/glib2-2.14.5/HACKING
-  /usr/share/doc/glib2-2.14.5/INSTALL
-  /usr/share/doc/glib2-2.14.5/MAINTAINERS
-  /usr/share/doc/glib2-2.14.5/NEWS
-  /usr/share/doc/glib2-2.14.5/README
+  /usr/share/doc/Cygwin/glib2-2.14.6.README
+  /usr/share/doc/glib2-2.14.6/AUTHORS
+  /usr/share/doc/glib2-2.14.6/COPYING
+  /usr/share/doc/glib2-2.14.6/ChangeLog
+  /usr/share/doc/glib2-2.14.6/HACKING
+  /usr/share/doc/glib2-2.14.6/INSTALL
+  /usr/share/doc/glib2-2.14.6/MAINTAINERS
+  /usr/share/doc/glib2-2.14.6/NEWS
+  /usr/share/doc/glib2-2.14.6/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -426,6 +425,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.14.6-1 -----
+Version bump.
 
 ----- version 2.14.5-1 -----
 Version bump for GNOME 2.20.3.
