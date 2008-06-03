@@ -6,20 +6,24 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.5.25-7
+  cygwin-1.5.25-11
+  gamin-0.1.9-1
   libiconv2-1.11-1
   libintl8-0.15-1
-  libpcre0-7.6-1
+  libpcre0-7.7-1
+  perl
+  python
 
 Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.61-1
-  automake1.7-1.7.9-2
-  cygport-0.3.7-1
+  automake1.10-1.10.1-1
+  cygport-0.3.10-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
-  gtk-doc-1.9-1
-  libtool1.5-1.5.23a-2
+  gnome-common-2.20.0-2
+  gtk-doc-1.10-1
+  libtool-2.2.2-2
   make-3.81-1
   pkg-config-0.21-1
   sed-4.1.5-2
@@ -34,35 +38,37 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.14.6-X-src.tar.bz2
+  unpack glib2-2.16.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.14.6-X.cygport all
+  cygport ./glib2-2.16.3-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.14.6-X-src.tar.bz2
-  /usr/src/glib2-2.14.6-X.tar.bz2
-  /usr/src/glib2-devel-2.14.6-X.tar.bz2
+  /usr/src/glib2-2.16.3-X-src.tar.bz2
+  /usr/src/glib2-2.16.3-X.tar.bz2
+  /usr/src/glib2-devel-2.16.3-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary packages:
 
 (glib2)
+  /usr/bin/cyggio-2.0-0.dll
   /usr/bin/cygglib-2.0-0.dll
   /usr/bin/cyggmodule-2.0-0.dll
   /usr/bin/cyggobject-2.0-0.dll
   /usr/bin/cyggthread-2.0-0.dll
-  /usr/share/doc/Cygwin/glib2-2.14.6.README
-  /usr/share/doc/glib2-2.14.6/AUTHORS
-  /usr/share/doc/glib2-2.14.6/COPYING
-  /usr/share/doc/glib2-2.14.6/ChangeLog
-  /usr/share/doc/glib2-2.14.6/HACKING
-  /usr/share/doc/glib2-2.14.6/INSTALL
-  /usr/share/doc/glib2-2.14.6/MAINTAINERS
-  /usr/share/doc/glib2-2.14.6/NEWS
-  /usr/share/doc/glib2-2.14.6/README
+  /usr/lib/gio/modules/cyggiofam.dll
+  /usr/lib/gio/modules/libgiofam.la
+  /usr/share/doc/glib2-2.16.3/AUTHORS
+  /usr/share/doc/glib2-2.16.3/COPYING
+  /usr/share/doc/glib2-2.16.3/ChangeLog
+  /usr/share/doc/glib2-2.16.3/HACKING
+  /usr/share/doc/glib2-2.16.3/INSTALL
+  /usr/share/doc/glib2-2.16.3/MAINTAINERS
+  /usr/share/doc/glib2-2.16.3/NEWS
+  /usr/share/doc/glib2-2.16.3/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -111,6 +117,7 @@ Files included in the binary packages:
   /usr/share/locale/mk/LC_MESSAGES/glib20.mo
   /usr/share/locale/ml/LC_MESSAGES/glib20.mo
   /usr/share/locale/mn/LC_MESSAGES/glib20.mo
+  /usr/share/locale/mr/LC_MESSAGES/glib20.mo
   /usr/share/locale/ms/LC_MESSAGES/glib20.mo
   /usr/share/locale/nb/LC_MESSAGES/glib20.mo
   /usr/share/locale/ne/LC_MESSAGES/glib20.mo
@@ -125,6 +132,7 @@ Files included in the binary packages:
   /usr/share/locale/ro/LC_MESSAGES/glib20.mo
   /usr/share/locale/ru/LC_MESSAGES/glib20.mo
   /usr/share/locale/rw/LC_MESSAGES/glib20.mo
+  /usr/share/locale/si/LC_MESSAGES/glib20.mo
   /usr/share/locale/sk/LC_MESSAGES/glib20.mo
   /usr/share/locale/sl/LC_MESSAGES/glib20.mo
   /usr/share/locale/sq/LC_MESSAGES/glib20.mo
@@ -152,6 +160,52 @@ Files included in the binary packages:
   /usr/bin/glib-gettextize
   /usr/bin/glib-mkenums
   /usr/bin/gobject-query.exe
+  /usr/bin/gtester-report
+  /usr/bin/gtester.exe
+  /usr/include/gio-unix-2.0/gio/gdesktopappinfo.h
+  /usr/include/gio-unix-2.0/gio/gunixinputstream.h
+  /usr/include/gio-unix-2.0/gio/gunixmounts.h
+  /usr/include/gio-unix-2.0/gio/gunixoutputstream.h
+  /usr/include/glib-2.0/gio/gappinfo.h
+  /usr/include/glib-2.0/gio/gasyncresult.h
+  /usr/include/glib-2.0/gio/gbufferedinputstream.h
+  /usr/include/glib-2.0/gio/gbufferedoutputstream.h
+  /usr/include/glib-2.0/gio/gcancellable.h
+  /usr/include/glib-2.0/gio/gcontenttype.h
+  /usr/include/glib-2.0/gio/gdatainputstream.h
+  /usr/include/glib-2.0/gio/gdataoutputstream.h
+  /usr/include/glib-2.0/gio/gdrive.h
+  /usr/include/glib-2.0/gio/gfile.h
+  /usr/include/glib-2.0/gio/gfileattribute.h
+  /usr/include/glib-2.0/gio/gfileenumerator.h
+  /usr/include/glib-2.0/gio/gfileicon.h
+  /usr/include/glib-2.0/gio/gfileinfo.h
+  /usr/include/glib-2.0/gio/gfileinputstream.h
+  /usr/include/glib-2.0/gio/gfilemonitor.h
+  /usr/include/glib-2.0/gio/gfilenamecompleter.h
+  /usr/include/glib-2.0/gio/gfileoutputstream.h
+  /usr/include/glib-2.0/gio/gfilterinputstream.h
+  /usr/include/glib-2.0/gio/gfilteroutputstream.h
+  /usr/include/glib-2.0/gio/gicon.h
+  /usr/include/glib-2.0/gio/ginputstream.h
+  /usr/include/glib-2.0/gio/gio.h
+  /usr/include/glib-2.0/gio/gioenumtypes.h
+  /usr/include/glib-2.0/gio/gioerror.h
+  /usr/include/glib-2.0/gio/giomodule.h
+  /usr/include/glib-2.0/gio/gioscheduler.h
+  /usr/include/glib-2.0/gio/gloadableicon.h
+  /usr/include/glib-2.0/gio/gmemoryinputstream.h
+  /usr/include/glib-2.0/gio/gmemoryoutputstream.h
+  /usr/include/glib-2.0/gio/gmount.h
+  /usr/include/glib-2.0/gio/gmountoperation.h
+  /usr/include/glib-2.0/gio/gnativevolumemonitor.h
+  /usr/include/glib-2.0/gio/goutputstream.h
+  /usr/include/glib-2.0/gio/gseekable.h
+  /usr/include/glib-2.0/gio/gsimpleasyncresult.h
+  /usr/include/glib-2.0/gio/gthemedicon.h
+  /usr/include/glib-2.0/gio/gvfs.h
+  /usr/include/glib-2.0/gio/gvolume.h
+  /usr/include/glib-2.0/gio/gvolumemonitor.h
   /usr/include/glib-2.0/glib-object.h
   /usr/include/glib-2.0/glib.h
   /usr/include/glib-2.0/glib/galloca.h
@@ -162,6 +216,7 @@ Files included in the binary packages:
   /usr/include/glib-2.0/glib/gbase64.h
   /usr/include/glib-2.0/glib/gbookmarkfile.h
   /usr/include/glib-2.0/glib/gcache.h
+  /usr/include/glib-2.0/glib/gchecksum.h
   /usr/include/glib-2.0/glib/gcompletion.h
   /usr/include/glib-2.0/glib/gconvert.h
   /usr/include/glib-2.0/glib/gdataset.h
@@ -202,12 +257,14 @@ Files included in the binary packages:
   /usr/include/glib-2.0/glib/gstdio.h
   /usr/include/glib-2.0/glib/gstrfuncs.h
   /usr/include/glib-2.0/glib/gstring.h
+  /usr/include/glib-2.0/glib/gtestutils.h
   /usr/include/glib-2.0/glib/gthread.h
   /usr/include/glib-2.0/glib/gthreadpool.h
   /usr/include/glib-2.0/glib/gtimer.h
   /usr/include/glib-2.0/glib/gtree.h
   /usr/include/glib-2.0/glib/gtypes.h
   /usr/include/glib-2.0/glib/gunicode.h
+  /usr/include/glib-2.0/glib/gurifuncs.h
   /usr/include/glib-2.0/glib/gutils.h
   /usr/include/glib-2.0/glib/gwin32.h
   /usr/include/glib-2.0/gmodule.h
@@ -229,6 +286,9 @@ Files included in the binary packages:
   /usr/include/glib-2.0/gobject/gvaluecollector.h
   /usr/include/glib-2.0/gobject/gvaluetypes.h
   /usr/lib/glib-2.0/include/glibconfig.h
+  /usr/lib/libgio-2.0.a
+  /usr/lib/libgio-2.0.dll.a
+  /usr/lib/libgio-2.0.la
   /usr/lib/libglib-2.0.a
   /usr/lib/libglib-2.0.dll.a
   /usr/lib/libglib-2.0.la
@@ -241,6 +301,8 @@ Files included in the binary packages:
   /usr/lib/libgthread-2.0.a
   /usr/lib/libgthread-2.0.dll.a
   /usr/lib/libgthread-2.0.la
+  /usr/lib/pkgconfig/gio-2.0.pc
+  /usr/lib/pkgconfig/gio-unix-2.0.pc
   /usr/lib/pkgconfig/glib-2.0.pc
   /usr/lib/pkgconfig/gmodule-2.0.pc
   /usr/lib/pkgconfig/gmodule-export-2.0.pc
@@ -251,6 +313,79 @@ Files included in the binary packages:
   /usr/share/aclocal/glib-gettext.m4
   /usr/share/glib-2.0/gettext/mkinstalldirs
   /usr/share/glib-2.0/gettext/po/Makefile.in.in
+  /usr/share/gtk-doc/html/gio/GAppInfo.html
+  /usr/share/gtk-doc/html/gio/GAsyncResult.html
+  /usr/share/gtk-doc/html/gio/GBufferedInputStream.html
+  /usr/share/gtk-doc/html/gio/GBufferedOutputStream.html
+  /usr/share/gtk-doc/html/gio/GCancellable.html
+  /usr/share/gtk-doc/html/gio/GDataInputStream.html
+  /usr/share/gtk-doc/html/gio/GDataOutputStream.html
+  /usr/share/gtk-doc/html/gio/GDrive.html
+  /usr/share/gtk-doc/html/gio/GFile.html
+  /usr/share/gtk-doc/html/gio/GFileEnumerator.html
+  /usr/share/gtk-doc/html/gio/GFileIcon.html
+  /usr/share/gtk-doc/html/gio/GFileInfo.html
+  /usr/share/gtk-doc/html/gio/GFileInputStream.html
+  /usr/share/gtk-doc/html/gio/GFileMonitor.html
+  /usr/share/gtk-doc/html/gio/GFileOutputStream.html
+  /usr/share/gtk-doc/html/gio/GFilenameCompleter.html
+  /usr/share/gtk-doc/html/gio/GFilterInputStream.html
+  /usr/share/gtk-doc/html/gio/GFilterOutputStream.html
+  /usr/share/gtk-doc/html/gio/GIOModule.html
+  /usr/share/gtk-doc/html/gio/GIcon.html
+  /usr/share/gtk-doc/html/gio/GInputStream.html
+  /usr/share/gtk-doc/html/gio/GLoadableIcon.html
+  /usr/share/gtk-doc/html/gio/GMemoryInputStream.html
+  /usr/share/gtk-doc/html/gio/GMemoryOutputStream.html
+  /usr/share/gtk-doc/html/gio/GMount.html
+  /usr/share/gtk-doc/html/gio/GMountOperation.html
+  /usr/share/gtk-doc/html/gio/GOutputStream.html
+  /usr/share/gtk-doc/html/gio/GSeekable.html
+  /usr/share/gtk-doc/html/gio/GSimpleAsyncResult.html
+  /usr/share/gtk-doc/html/gio/GThemedIcon.html
+  /usr/share/gtk-doc/html/gio/GUnixInputStream.html
+  /usr/share/gtk-doc/html/gio/GUnixOutputStream.html
+  /usr/share/gtk-doc/html/gio/GVfs.html
+  /usr/share/gtk-doc/html/gio/GVolume.html
+  /usr/share/gtk-doc/html/gio/GVolumeMonitor.html
+  /usr/share/gtk-doc/html/gio/async.html
+  /usr/share/gtk-doc/html/gio/ch01.html
+  /usr/share/gtk-doc/html/gio/ch02.html
+  /usr/share/gtk-doc/html/gio/ch03.html
+  /usr/share/gtk-doc/html/gio/ch14.html
+  /usr/share/gtk-doc/html/gio/ch15.html
+  /usr/share/gtk-doc/html/gio/ch15s02.html
+  /usr/share/gtk-doc/html/gio/ch15s03.html
+  /usr/share/gtk-doc/html/gio/extending.html
+  /usr/share/gtk-doc/html/gio/file_mon.html
+  /usr/share/gtk-doc/html/gio/file_ops.html
+  /usr/share/gtk-doc/html/gio/gio-Desktop-file-based-GAppInfo.html
+  /usr/share/gtk-doc/html/gio/gio-GContentType.html
+  /usr/share/gtk-doc/html/gio/gio-GFileAttribute.html
+  /usr/share/gtk-doc/html/gio/gio-GIOError.html
+  /usr/share/gtk-doc/html/gio/gio-GIOScheduler.html
+  /usr/share/gtk-doc/html/gio/gio-Unix-Mounts.html
+  /usr/share/gtk-doc/html/gio/gio-extension-points.html
+  /usr/share/gtk-doc/html/gio/gio-hierarchy.html
+  /usr/share/gtk-doc/html/gio/gio.devhelp
+  /usr/share/gtk-doc/html/gio/gio.devhelp2
+  /usr/share/gtk-doc/html/gio/gvfs-overview.png
+  /usr/share/gtk-doc/html/gio/home.png
+  /usr/share/gtk-doc/html/gio/icons.html
+  /usr/share/gtk-doc/html/gio/index.html
+  /usr/share/gtk-doc/html/gio/index.sgml
+  /usr/share/gtk-doc/html/gio/ix01.html
+  /usr/share/gtk-doc/html/gio/left.png
+  /usr/share/gtk-doc/html/gio/migrating.html
+  /usr/share/gtk-doc/html/gio/pt01.html
+  /usr/share/gtk-doc/html/gio/pt02.html
+  /usr/share/gtk-doc/html/gio/right.png
+  /usr/share/gtk-doc/html/gio/streaming.html
+  /usr/share/gtk-doc/html/gio/style.css
+  /usr/share/gtk-doc/html/gio/types.html
+  /usr/share/gtk-doc/html/gio/up.png
+  /usr/share/gtk-doc/html/gio/utils.html
+  /usr/share/gtk-doc/html/gio/volume_mon.html
   /usr/share/gtk-doc/html/glib/file-name-encodings.png
   /usr/share/gtk-doc/html/glib/glib-Arrays.html
   /usr/share/gtk-doc/html/glib/glib-Asynchronous-Queues.html
@@ -265,6 +400,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/glib-Caches.html
   /usr/share/gtk-doc/html/glib/glib-Character-Set-Conversion.html
   /usr/share/gtk-doc/html/glib/glib-Commandline-option-parser.html
+  /usr/share/gtk-doc/html/glib/glib-Data-Checksums.html
   /usr/share/gtk-doc/html/glib/glib-Datasets.html
   /usr/share/gtk-doc/html/glib/glib-Date-and-Time-Functions.html
   /usr/share/gtk-doc/html/glib/glib-Double-ended-Queues.html
@@ -304,12 +440,14 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/glib-String-Chunks.html
   /usr/share/gtk-doc/html/glib/glib-String-Utility-Functions.html
   /usr/share/gtk-doc/html/glib/glib-Strings.html
+  /usr/share/gtk-doc/html/glib/glib-Testing.html
   /usr/share/gtk-doc/html/glib/glib-The-Main-Event-Loop.html
   /usr/share/gtk-doc/html/glib/glib-Thread-Pools.html
   /usr/share/gtk-doc/html/glib/glib-Threads.html
   /usr/share/gtk-doc/html/glib/glib-Timers.html
   /usr/share/gtk-doc/html/glib/glib-Trash-Stacks.html
   /usr/share/gtk-doc/html/glib/glib-Type-Conversion-Macros.html
+  /usr/share/gtk-doc/html/glib/glib-URI-Functions.html
   /usr/share/gtk-doc/html/glib/glib-Unicode-Manipulation.html
   /usr/share/gtk-doc/html/glib/glib-Version-Information.html
   /usr/share/gtk-doc/html/glib/glib-Warnings-and-Assertions.html
@@ -341,6 +479,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/ix07.html
   /usr/share/gtk-doc/html/glib/ix08.html
   /usr/share/gtk-doc/html/glib/ix09.html
+  /usr/share/gtk-doc/html/glib/ix10.html
   /usr/share/gtk-doc/html/glib/left.png
   /usr/share/gtk-doc/html/glib/mainloop-states.gif
   /usr/share/gtk-doc/html/glib/right.png
@@ -425,6 +564,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.16.3-1 -----
+Version bump for GNOME 2.22.
 
 ----- version 2.14.6-1 -----
 Version bump.

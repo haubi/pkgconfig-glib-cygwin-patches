@@ -1,5 +1,5 @@
 category: Gnome Libs
-requires: cygwin glib2 libiconv gettext pcre-devel
+requires: cygwin glib2 libiconv gettext pcre-devel bash perl python
 external-source: glib2
 sdesc: "GNOME C function library (development)"
 ldesc: "GLib is the low-level core library that forms the basis for projects
