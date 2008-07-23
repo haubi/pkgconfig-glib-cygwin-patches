@@ -1,0 +1,29 @@
+ORIG_PN=${PN%${PV_MAJ}}
+
+inherit gnome2
+
+DESCRIPTION="GNOME core C function library"
+HOMEPAGE="http://www.gtk.org/"
+
+# syslog-ng needs a static libglib-2.0
+CYGCONF_ARGS="
+	--enable-static
+	--disable-visibility
+	--with-libiconv=gnu
+	--with-pcre=system
+	--with-threads=posix
+"
+
+PKG_NAMES="${PN} ${PN}-devel"
+PKG_HINTS='setup devel'
+PKG_CONTENTS[0]='usr/bin/*.dll usr/lib/gio/ usr/share/doc/ usr/share/locale/'
+PKG_CONTENTS[1]="--exclude=modules --exclude=*.dll usr/bin/ usr/include/
+                 usr/lib/ usr/share/aclocal/ usr/share/glib-2.0/
+                 usr/share/gtk-doc/ usr/share/man/"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -f ${D}/usr/lib/charset.alias
+}
