@@ -5,6 +5,9 @@ inherit gnome2
 DESCRIPTION="GNOME core C function library"
 HOMEPAGE="http://www.gtk.org/"
 
+PATCH_URI="2.16-gmodule.patch
+           2.16-tests.patch"
+
 # syslog-ng needs a static libglib-2.0
 CYGCONF_ARGS="
 	--enable-static

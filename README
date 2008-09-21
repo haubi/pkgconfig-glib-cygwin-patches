@@ -18,7 +18,7 @@ Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.62-1
   automake1.10-1.10.1-1
-  cygport-0.3.12-1
+  cygport-0.4.0-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   gnome-common-2.20.0-2
@@ -38,16 +38,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.16.5-X-src.tar.bz2
+  unpack glib2-2.16.6-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.16.5-X.cygport all
+  cygport ./glib2-2.16.6-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.16.5-X-src.tar.bz2
-  /usr/src/glib2-2.16.5-X.tar.bz2
-  /usr/src/glib2-devel-2.16.5-X.tar.bz2
+  /usr/src/glib2-2.16.6-X-src.tar.bz2
+  /usr/src/glib2-2.16.6-X.tar.bz2
+  /usr/src/glib2-devel-2.16.6-X.tar.bz2
 
 -------------------------------------------
 
@@ -61,14 +61,14 @@ Files included in the binary packages:
   /usr/bin/cyggthread-2.0-0.dll
   /usr/lib/gio/modules/cyggiofam.dll
   /usr/lib/gio/modules/libgiofam.la
-  /usr/share/doc/glib2-2.16.5/AUTHORS
-  /usr/share/doc/glib2-2.16.5/COPYING
-  /usr/share/doc/glib2-2.16.5/ChangeLog
-  /usr/share/doc/glib2-2.16.5/HACKING
-  /usr/share/doc/glib2-2.16.5/INSTALL
-  /usr/share/doc/glib2-2.16.5/MAINTAINERS
-  /usr/share/doc/glib2-2.16.5/NEWS
-  /usr/share/doc/glib2-2.16.5/README
+  /usr/share/doc/glib2-2.16.6/AUTHORS
+  /usr/share/doc/glib2-2.16.6/COPYING
+  /usr/share/doc/glib2-2.16.6/ChangeLog
+  /usr/share/doc/glib2-2.16.6/HACKING
+  /usr/share/doc/glib2-2.16.6/INSTALL
+  /usr/share/doc/glib2-2.16.6/MAINTAINERS
+  /usr/share/doc/glib2-2.16.6/NEWS
+  /usr/share/doc/glib2-2.16.6/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -564,6 +564,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.16.6-1 -----
+Version bump.
 
 ----- version 2.16.5-1 -----
 Version bump.
