@@ -133,15 +133,3 @@
   
    return 0;
  }
---- origsrc/glib-2.16.5/tests/strtod-test.c	2008-07-01 17:30:07.000000000 -0500
-+++ src/glib-2.16.5/tests/strtod-test.c	2008-07-22 18:05:16.328125000 -0500
-@@ -92,7 +92,9 @@
- #else
-   our_inf = atof ("Infinity");
- #endif
-+#ifndef __CYGWIN__
-   g_assert (our_inf > 1 && our_inf == our_inf / 2);
-+#endif
- 
-   test_string ("123.123", 123.123, FALSE, 0);
-   test_string ("123.123e2", 123.123e2, FALSE, 0);

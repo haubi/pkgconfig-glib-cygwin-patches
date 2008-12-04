@@ -1,4 +1,4 @@
-glib2
+glib2.0
 ------------------------------------------
 GLib is the low-level core library that forms the basis for projects
 such as GTK+ and GNOME. It provides data structure handling for C,
@@ -7,23 +7,23 @@ an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
   cygwin-1.5.25-15
-  gamin-0.1.9-1
-  libiconv2-1.11-1
-  libintl8-0.15-1
-  libpcre0-7.7-2
+  libfam0-0.1.10-1
+  libiconv2-1.12-1
+  libintl8-0.17-2
+  libpcre0-7.8-1
   perl
   python
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.62-1
-  automake1.10-1.10.1-1
-  cygport-0.4.0-1
+  autoconf2.5-2.63-1
+  automake1.10-1.10.1-2
+  cygport-0.4.2-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
-  gnome-common-2.20.0-2
+  gnome-common-2.24.0-1
   gtk-doc-1.10-1
-  libtool-2.2.2-2
+  libtool-2.2.6a-1
   make-3.81-1
   pkg-config-0.23a-2
   sed-4.1.5-2
@@ -38,22 +38,22 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2-2.16.6-X-src.tar.bz2
+  unpack glib2.0-2.18.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2-2.16.6-X.cygport all
+  cygport ./glib2.0-2.18.3-X.cygport all
 
 This will create:
-  /usr/src/glib2-2.16.6-X-src.tar.bz2
-  /usr/src/glib2-2.16.6-X.tar.bz2
-  /usr/src/glib2-devel-2.16.6-X.tar.bz2
+  /usr/src/glib2.0-2.18.3-X-src.tar.bz2
+  /usr/src/libglib2.0-2.18.3-X.tar.bz2
+  /usr/src/libglib2.0-devel-2.18.3-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary packages:
 
-(glib2)
+(libglib2.0)
   /usr/bin/cyggio-2.0-0.dll
   /usr/bin/cygglib-2.0-0.dll
   /usr/bin/cyggmodule-2.0-0.dll
@@ -61,14 +61,14 @@ Files included in the binary packages:
   /usr/bin/cyggthread-2.0-0.dll
   /usr/lib/gio/modules/cyggiofam.dll
   /usr/lib/gio/modules/libgiofam.la
-  /usr/share/doc/glib2-2.16.6/AUTHORS
-  /usr/share/doc/glib2-2.16.6/COPYING
-  /usr/share/doc/glib2-2.16.6/ChangeLog
-  /usr/share/doc/glib2-2.16.6/HACKING
-  /usr/share/doc/glib2-2.16.6/INSTALL
-  /usr/share/doc/glib2-2.16.6/MAINTAINERS
-  /usr/share/doc/glib2-2.16.6/NEWS
-  /usr/share/doc/glib2-2.16.6/README
+  /usr/share/doc/glib2.0-2.18.3/AUTHORS
+  /usr/share/doc/glib2.0-2.18.3/COPYING
+  /usr/share/doc/glib2.0-2.18.3/ChangeLog
+  /usr/share/doc/glib2.0-2.18.3/HACKING
+  /usr/share/doc/glib2.0-2.18.3/INSTALL
+  /usr/share/doc/glib2.0-2.18.3/MAINTAINERS
+  /usr/share/doc/glib2.0-2.18.3/NEWS
+  /usr/share/doc/glib2.0-2.18.3/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -113,6 +113,7 @@ Files included in the binary packages:
   /usr/share/locale/ku/LC_MESSAGES/glib20.mo
   /usr/share/locale/lt/LC_MESSAGES/glib20.mo
   /usr/share/locale/lv/LC_MESSAGES/glib20.mo
+  /usr/share/locale/mai/LC_MESSAGES/glib20.mo
   /usr/share/locale/mg/LC_MESSAGES/glib20.mo
   /usr/share/locale/mk/LC_MESSAGES/glib20.mo
   /usr/share/locale/ml/LC_MESSAGES/glib20.mo
@@ -127,6 +128,7 @@ Files included in the binary packages:
   /usr/share/locale/or/LC_MESSAGES/glib20.mo
   /usr/share/locale/pa/LC_MESSAGES/glib20.mo
   /usr/share/locale/pl/LC_MESSAGES/glib20.mo
+  /usr/share/locale/ps/LC_MESSAGES/glib20.mo
   /usr/share/locale/pt/LC_MESSAGES/glib20.mo
   /usr/share/locale/pt_BR/LC_MESSAGES/glib20.mo
   /usr/share/locale/ro/LC_MESSAGES/glib20.mo
@@ -137,8 +139,8 @@ Files included in the binary packages:
   /usr/share/locale/sl/LC_MESSAGES/glib20.mo
   /usr/share/locale/sq/LC_MESSAGES/glib20.mo
   /usr/share/locale/sr/LC_MESSAGES/glib20.mo
-  /usr/share/locale/sr@Latn/LC_MESSAGES/glib20.mo
   /usr/share/locale/sr@ije/LC_MESSAGES/glib20.mo
+  /usr/share/locale/sr@latin/LC_MESSAGES/glib20.mo
   /usr/share/locale/sv/LC_MESSAGES/glib20.mo
   /usr/share/locale/ta/LC_MESSAGES/glib20.mo
   /usr/share/locale/te/LC_MESSAGES/glib20.mo
@@ -155,7 +157,7 @@ Files included in the binary packages:
   /usr/share/locale/zh_HK/LC_MESSAGES/glib20.mo
   /usr/share/locale/zh_TW/LC_MESSAGES/glib20.mo
 
-(glib2-devel)
+(libglib2.0-devel)
   /usr/bin/glib-genmarshal.exe
   /usr/bin/glib-gettextize
   /usr/bin/glib-mkenums
@@ -175,6 +177,8 @@ Files included in the binary packages:
   /usr/include/glib-2.0/gio/gdatainputstream.h
   /usr/include/glib-2.0/gio/gdataoutputstream.h
   /usr/include/glib-2.0/gio/gdrive.h
+  /usr/include/glib-2.0/gio/gemblem.h
+  /usr/include/glib-2.0/gio/gemblemedicon.h
   /usr/include/glib-2.0/gio/gfile.h
   /usr/include/glib-2.0/gio/gfileattribute.h
   /usr/include/glib-2.0/gio/gfileenumerator.h
@@ -189,10 +193,12 @@ Files included in the binary packages:
   /usr/include/glib-2.0/gio/gicon.h
   /usr/include/glib-2.0/gio/ginputstream.h
   /usr/include/glib-2.0/gio/gio.h
+  /usr/include/glib-2.0/gio/gioenums.h
   /usr/include/glib-2.0/gio/gioenumtypes.h
   /usr/include/glib-2.0/gio/gioerror.h
   /usr/include/glib-2.0/gio/giomodule.h
   /usr/include/glib-2.0/gio/gioscheduler.h
+  /usr/include/glib-2.0/gio/giotypes.h
   /usr/include/glib-2.0/gio/gloadableicon.h
   /usr/include/glib-2.0/gio/gmemoryinputstream.h
   /usr/include/glib-2.0/gio/gmemoryoutputstream.h
@@ -321,6 +327,8 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gio/GDataInputStream.html
   /usr/share/gtk-doc/html/gio/GDataOutputStream.html
   /usr/share/gtk-doc/html/gio/GDrive.html
+  /usr/share/gtk-doc/html/gio/GEmblem.html
+  /usr/share/gtk-doc/html/gio/GEmblemedIcon.html
   /usr/share/gtk-doc/html/gio/GFile.html
   /usr/share/gtk-doc/html/gio/GFileEnumerator.html
   /usr/share/gtk-doc/html/gio/GFileIcon.html
@@ -356,16 +364,17 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gio/ch15.html
   /usr/share/gtk-doc/html/gio/ch15s02.html
   /usr/share/gtk-doc/html/gio/ch15s03.html
+  /usr/share/gtk-doc/html/gio/extending-gio.html
   /usr/share/gtk-doc/html/gio/extending.html
   /usr/share/gtk-doc/html/gio/file_mon.html
   /usr/share/gtk-doc/html/gio/file_ops.html
   /usr/share/gtk-doc/html/gio/gio-Desktop-file-based-GAppInfo.html
+  /usr/share/gtk-doc/html/gio/gio-Extension-Points.html
   /usr/share/gtk-doc/html/gio/gio-GContentType.html
   /usr/share/gtk-doc/html/gio/gio-GFileAttribute.html
   /usr/share/gtk-doc/html/gio/gio-GIOError.html
   /usr/share/gtk-doc/html/gio/gio-GIOScheduler.html
   /usr/share/gtk-doc/html/gio/gio-Unix-Mounts.html
-  /usr/share/gtk-doc/html/gio/gio-extension-points.html
   /usr/share/gtk-doc/html/gio/gio-hierarchy.html
   /usr/share/gtk-doc/html/gio/gio.devhelp
   /usr/share/gtk-doc/html/gio/gio.devhelp2
@@ -375,6 +384,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gio/index.html
   /usr/share/gtk-doc/html/gio/index.sgml
   /usr/share/gtk-doc/html/gio/ix01.html
+  /usr/share/gtk-doc/html/gio/ix02.html
   /usr/share/gtk-doc/html/gio/left.png
   /usr/share/gtk-doc/html/gio/migrating.html
   /usr/share/gtk-doc/html/gio/pt01.html
@@ -467,6 +477,8 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/glib.devhelp
   /usr/share/gtk-doc/html/glib/glib.devhelp2
   /usr/share/gtk-doc/html/glib/glib.html
+  /usr/share/gtk-doc/html/glib/gtester-report.html
+  /usr/share/gtk-doc/html/glib/gtester.html
   /usr/share/gtk-doc/html/glib/home.png
   /usr/share/gtk-doc/html/glib/index.html
   /usr/share/gtk-doc/html/glib/index.sgml
@@ -480,6 +492,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/ix08.html
   /usr/share/gtk-doc/html/glib/ix09.html
   /usr/share/gtk-doc/html/glib/ix10.html
+  /usr/share/gtk-doc/html/glib/ix11.html
   /usr/share/gtk-doc/html/glib/left.png
   /usr/share/gtk-doc/html/glib/mainloop-states.gif
   /usr/share/gtk-doc/html/glib/right.png
@@ -490,8 +503,6 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gobject/GTypePlugin.html
   /usr/share/gtk-doc/html/gobject/ch01s02.html
   /usr/share/gtk-doc/html/gobject/ch06s03.html
-  /usr/share/gtk-doc/html/gobject/ch07s02.html
-  /usr/share/gtk-doc/html/gobject/ch07s03.html
   /usr/share/gtk-doc/html/gobject/chapter-gobject.html
   /usr/share/gtk-doc/html/gobject/chapter-gtype.html
   /usr/share/gtk-doc/html/gobject/chapter-intro.html
@@ -541,6 +552,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gobject/ix07.html
   /usr/share/gtk-doc/html/gobject/ix08.html
   /usr/share/gtk-doc/html/gobject/ix09.html
+  /usr/share/gtk-doc/html/gobject/ix10.html
   /usr/share/gtk-doc/html/gobject/left.png
   /usr/share/gtk-doc/html/gobject/pr01.html
   /usr/share/gtk-doc/html/gobject/pt01.html
@@ -555,15 +567,21 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gobject/tools-gob.html
   /usr/share/gtk-doc/html/gobject/tools-gtkdoc.html
   /usr/share/gtk-doc/html/gobject/tools-refdb.html
+  /usr/share/gtk-doc/html/gobject/tools-vala.html
   /usr/share/gtk-doc/html/gobject/up.png
   /usr/share/man/man1/glib-genmarshal.1.gz
   /usr/share/man/man1/glib-gettextize.1.gz
   /usr/share/man/man1/glib-mkenums.1.gz
   /usr/share/man/man1/gobject-query.1.gz
+  /usr/share/man/man1/gtester-report.1.gz
+  /usr/share/man/man1/gtester.1.gz
 
 ------------------
 
 Port Notes:
+
+----- version 2.18.3-1 -----
+Version bump for GNOME 2.24.
 
 ----- version 2.16.6-1 -----
 Version bump.

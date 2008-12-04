@@ -1,6 +1,5 @@
 category: Gnome Libs
-requires: cygwin gamin libiconv2 libintl8 libpcre0
-sdesc: "GNOME C function library (runtime)"
+sdesc: "GNOME C function library (sources)"
 ldesc: "GLib is the low-level core library that forms the basis for projects
 such as GTK+ and GNOME. It provides data structure handling for C,
 portability wrappers, and interfaces for such runtime functionality as

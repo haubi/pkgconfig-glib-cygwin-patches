@@ -1,7 +1,7 @@
 category: Gnome Libs
-requires: cygwin glib2 libiconv gettext pcre-devel bash perl python
-external-source: glib2
-sdesc: "GNOME C function library (development)"
+requires: cygwin libfam0 libiconv2 libintl8 libpcre0
+external-source: glib2.0
+sdesc: "GNOME C function library (runtime)"
 ldesc: "GLib is the low-level core library that forms the basis for projects
 such as GTK+ and GNOME. It provides data structure handling for C,
 portability wrappers, and interfaces for such runtime functionality as
