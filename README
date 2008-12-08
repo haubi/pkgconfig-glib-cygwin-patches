@@ -46,14 +46,14 @@ Build instructions:
 
 This will create:
   /usr/src/glib2.0-2.18.3-X-src.tar.bz2
-  /usr/src/libglib2.0-2.18.3-X.tar.bz2
+  /usr/src/libglib2.0_0-2.18.3-X.tar.bz2
   /usr/src/libglib2.0-devel-2.18.3-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary packages:
 
-(libglib2.0)
+(libglib2.0_0)
   /usr/bin/cyggio-2.0-0.dll
   /usr/bin/cygglib-2.0-0.dll
   /usr/bin/cyggmodule-2.0-0.dll

@@ -17,8 +17,8 @@ CYGCONF_ARGS="
 	--with-threads=posix
 "
 
-PKG_NAMES="${PN} lib${PN} lib${PN}-devel"
-libglib2_0_CONTENTS='usr/bin/*.dll usr/lib/gio/ usr/share/doc/ usr/share/locale/'
+PKG_NAMES="${PN} lib${PN}_0 lib${PN}-devel"
+libglib2_0_0_CONTENTS='usr/bin/*.dll usr/lib/gio/ usr/share/doc/ usr/share/locale/'
 libglib2_0_devel_CONTENTS="--exclude=modules --exclude=*.dll usr/bin/ usr/include/
                  usr/lib/ usr/share/aclocal/ usr/share/glib-2.0/
                  usr/share/gtk-doc/ usr/share/man/"
