@@ -18,7 +18,7 @@ Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.63-1
   automake1.10-1.10.1-2
-  cygport-0.4.2-1
+  cygport-0.4.3-1
   gawk-3.1.6-1
   gcc-core-3.4.4-3
   gnome-common-2.24.0-1
@@ -38,16 +38,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2.0-2.18.3-X-src.tar.bz2
+  unpack glib2.0-2.18.4-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2.0-2.18.3-X.cygport all
+  cygport ./glib2.0-2.18.4-X.cygport all
 
 This will create:
-  /usr/src/glib2.0-2.18.3-X-src.tar.bz2
-  /usr/src/libglib2.0_0-2.18.3-X.tar.bz2
-  /usr/src/libglib2.0-devel-2.18.3-X.tar.bz2
+  /usr/src/glib2.0-2.18.4-X-src.tar.bz2
+  /usr/src/libglib2.0_0-2.18.4-X.tar.bz2
+  /usr/src/libglib2.0-devel-2.18.4-X.tar.bz2
 
 -------------------------------------------
 
@@ -61,14 +61,14 @@ Files included in the binary packages:
   /usr/bin/cyggthread-2.0-0.dll
   /usr/lib/gio/modules/cyggiofam.dll
   /usr/lib/gio/modules/libgiofam.la
-  /usr/share/doc/glib2.0-2.18.3/AUTHORS
-  /usr/share/doc/glib2.0-2.18.3/COPYING
-  /usr/share/doc/glib2.0-2.18.3/ChangeLog
-  /usr/share/doc/glib2.0-2.18.3/HACKING
-  /usr/share/doc/glib2.0-2.18.3/INSTALL
-  /usr/share/doc/glib2.0-2.18.3/MAINTAINERS
-  /usr/share/doc/glib2.0-2.18.3/NEWS
-  /usr/share/doc/glib2.0-2.18.3/README
+  /usr/share/doc/glib2.0-2.18.4/AUTHORS
+  /usr/share/doc/glib2.0-2.18.4/COPYING
+  /usr/share/doc/glib2.0-2.18.4/ChangeLog
+  /usr/share/doc/glib2.0-2.18.4/HACKING
+  /usr/share/doc/glib2.0-2.18.4/INSTALL
+  /usr/share/doc/glib2.0-2.18.4/MAINTAINERS
+  /usr/share/doc/glib2.0-2.18.4/NEWS
+  /usr/share/doc/glib2.0-2.18.4/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -579,6 +579,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.18.4-1 -----
+Version bump.
 
 ----- version 2.18.3-1 -----
 Version bump for GNOME 2.24.
