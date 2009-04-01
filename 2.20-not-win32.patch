@@ -1,0 +1,105 @@
+--- origsrc/glib-2.20.0/gio/tests/live-g-file.c	2009-03-12 23:09:51.000000000 -0500
++++ src/glib-2.20.0/gio/tests/live-g-file.c	2009-03-14 22:14:36.578125000 -0500
+@@ -1124,7 +1124,7 @@ main (int argc, char *argv[])
+ 	  write_test = TRUE;
+ 	  only_create_struct = FALSE;
+ 	  target_path = DEFAULT_TEST_DIR;
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 	  posix_compat = FALSE;
+ #else
+ 	  posix_compat = TRUE;
+--- origsrc/glib-2.20.0/glib/gatomic.c	2009-03-12 23:09:59.000000000 -0500
++++ src/glib-2.20.0/glib/gatomic.c	2009-03-14 22:16:39.343750000 -0500
+@@ -777,7 +777,7 @@ g_atomic_int_add (volatile gint G_GNUC_M
+ #  define DEFINE_WITH_MUTEXES
+ # endif /* G_ATOMIC_* */
+ #else /* !__GNUC__ */
+-# ifdef G_PLATFORM_WIN32
++# ifdef G_OS_WIN32
+ #  define DEFINE_WITH_WIN32_INTERLOCKED
+ # else
+ #  define DEFINE_WITH_MUTEXES
+--- origsrc/glib-2.20.0/glib/gutf8.c	2009-03-12 23:09:59.000000000 -0500
++++ src/glib-2.20.0/glib/gutf8.c	2009-03-14 22:18:50.937500000 -0500
+@@ -29,7 +29,7 @@
+ 
+ #include "glib.h"
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ #include <stdio.h>
+ #define STRICT
+ #include <windows.h>
+--- origsrc/glib-2.20.0/glib/gutils.c	2009-03-12 23:09:59.000000000 -0500
++++ src/glib-2.20.0/glib/gutils.c	2009-03-14 22:47:54.734375000 -0500
+@@ -73,7 +73,7 @@
+ #define G_PATH_LENGTH   2048
+ #endif
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ #  define STRICT		/* Strict typing, please */
+ #  include <windows.h>
+ #  undef STRICT
+@@ -82,9 +82,6 @@
+ #    define GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS 4
+ #  endif
+ #  include <lmcons.h>		/* For UNLEN */
+-#endif /* G_PLATFORM_WIN32 */
+-
+-#ifdef G_OS_WIN32
+ #  include <direct.h>
+ #  include <shlobj.h>
+    /* older SDK (e.g. msvc 5.0) does not have these*/
+@@ -126,7 +123,7 @@ const guint glib_micro_version = GLIB_MI
+ const guint glib_interface_age = GLIB_INTERFACE_AGE;
+ const guint glib_binary_age = GLIB_BINARY_AGE;
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 
+ static HMODULE glib_dll = NULL;
+ 
+@@ -827,7 +824,7 @@ g_path_skip_root (const gchar *file_name
+ {
+   g_return_val_if_fail (file_name != NULL, NULL);
+   
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+   /* Skip \\server\share or //server/share */
+   if (G_IS_DIR_SEPARATOR (file_name[0]) &&
+       G_IS_DIR_SEPARATOR (file_name[1]) &&
+@@ -837,13 +834,11 @@ g_path_skip_root (const gchar *file_name
+       gchar *p;
+ 
+       p = strchr (file_name + 2, G_DIR_SEPARATOR);
+-#ifdef G_OS_WIN32
+       {
+ 	gchar *q = strchr (file_name + 2, '/');
+ 	if (p == NULL || (q != NULL && q < p))
+ 	  p = q;
+       }
+-#endif
+       if (p &&
+ 	  p > file_name + 2 &&
+ 	  p[1])
+--- origsrc/glib-2.20.0/glib/gutils.h	2009-03-12 23:09:59.000000000 -0500
++++ src/glib-2.20.0/glib/gutils.h	2009-03-14 22:48:29.625000000 -0500
+@@ -454,7 +454,7 @@ G_END_DECLS
+  * On non-Windows platforms, expands to nothing.
+  */
+ 
+-#ifndef G_PLATFORM_WIN32
++#ifndef G_OS_WIN32
+ # define G_WIN32_DLLMAIN_FOR_DLL_NAME(static, dll_name)
+ #else
+ # define G_WIN32_DLLMAIN_FOR_DLL_NAME(static, dll_name)			\
+@@ -482,6 +482,6 @@ DllMain (HINSTANCE hinstDLL,						\
+ 
+ #endif	/* !G_DISABLE_DEPRECATED */
+ 
+-#endif /* G_PLATFORM_WIN32 */
++#endif /* G_OS_WIN32 */
+ 
+ #endif /* __G_UTILS_H__ */

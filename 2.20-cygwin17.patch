@@ -1,0 +1,19 @@
+Cygwin strsignal prototype is now conformant.
+
+--- origsrc/glib-2.20.0/glib/gstrfuncs.c	2009-03-12 23:09:59.000000000 -0500
++++ src/glib-2.20.0/glib/gstrfuncs.c	2009-03-13 14:52:35.203125000 -0500
+@@ -1410,12 +1410,12 @@ g_strsignal (gint signum)
+ #ifdef HAVE_STRSIGNAL
+   const char *msg_locale;
+   
+-#if defined(G_OS_BEOS) || defined(G_WITH_CYGWIN)
++#if defined(G_OS_BEOS)
+ extern const char *strsignal(int);
+ #else
+   /* this is declared differently (const) in string.h on BeOS */
+   extern char *strsignal (int sig);
+-#endif /* !G_OS_BEOS && !G_WITH_CYGWIN */
++#endif /* !G_OS_BEOS */
+   msg_locale = strsignal (signum);
+   if (g_get_charset (NULL))
+     return msg_locale;

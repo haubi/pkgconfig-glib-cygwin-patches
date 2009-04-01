@@ -6,25 +6,26 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.5.25-15
-  libfam0-0.1.10-1
-  libiconv2-1.12-1
-  libintl8-0.17-2
-  libpcre0-7.8-1
+  cygwin-1.7.0-44
+  libfam0-0.1.10-10
+  libgcc4-4.3.2-2
+  libiconv2-1.12-10
+  libintl8-0.17-10
+  libpcre0-7.8-10
   perl
   python
 
 Build requirements:
 (besides corresponding -devel packages)
-  autoconf2.5-2.63-1
-  automake1.10-1.10.1-2
-  cygport-0.4.3-1
-  gawk-3.1.6-1
-  gcc-core-3.4.4-3
-  gnome-common-2.24.0-1
-  gtk-doc-1.10-1
-  libtool-2.2.6a-1
-  make-3.81-1
+  autoconf2.5-2.63-10
+  automake1.10-1.10.1-10
+  cygport-0.9.6-1
+  gawk-3.1.6-2
+  gcc4-core-4.3.2-2
+  gnome-common-2.26.0-1
+  gtk-doc-1.11-2
+  libtool-2.2.7a-11
+  make-3.81-2
   pkg-config-0.23a-2
   sed-4.1.5-2
 
@@ -38,16 +39,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2.0-2.18.4-X-src.tar.bz2
+  unpack glib2.0-2.20.0-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2.0-2.18.4-X.cygport all
+  cygport ./glib2.0-2.20.0-X.cygport all
 
 This will create:
-  /usr/src/glib2.0-2.18.4-X-src.tar.bz2
-  /usr/src/libglib2.0_0-2.18.4-X.tar.bz2
-  /usr/src/libglib2.0-devel-2.18.4-X.tar.bz2
+  /usr/src/glib2.0-2.20.0-X-src.tar.bz2
+  /usr/src/libglib2.0_0-2.20.0-X.tar.bz2
+  /usr/src/libglib2.0-devel-2.20.0-X.tar.bz2
 
 -------------------------------------------
 
@@ -61,14 +62,13 @@ Files included in the binary packages:
   /usr/bin/cyggthread-2.0-0.dll
   /usr/lib/gio/modules/cyggiofam.dll
   /usr/lib/gio/modules/libgiofam.la
-  /usr/share/doc/glib2.0-2.18.4/AUTHORS
-  /usr/share/doc/glib2.0-2.18.4/COPYING
-  /usr/share/doc/glib2.0-2.18.4/ChangeLog
-  /usr/share/doc/glib2.0-2.18.4/HACKING
-  /usr/share/doc/glib2.0-2.18.4/INSTALL
-  /usr/share/doc/glib2.0-2.18.4/MAINTAINERS
-  /usr/share/doc/glib2.0-2.18.4/NEWS
-  /usr/share/doc/glib2.0-2.18.4/README
+  /usr/share/doc/glib2.0/AUTHORS
+  /usr/share/doc/glib2.0/COPYING
+  /usr/share/doc/glib2.0/ChangeLog
+  /usr/share/doc/glib2.0/HACKING
+  /usr/share/doc/glib2.0/MAINTAINERS
+  /usr/share/doc/glib2.0/NEWS
+  /usr/share/doc/glib2.0/README
   /usr/share/locale/am/LC_MESSAGES/glib20.mo
   /usr/share/locale/ar/LC_MESSAGES/glib20.mo
   /usr/share/locale/as/LC_MESSAGES/glib20.mo
@@ -246,6 +246,7 @@ Files included in the binary packages:
   /usr/include/glib-2.0/glib/gnode.h
   /usr/include/glib-2.0/glib/goption.h
   /usr/include/glib-2.0/glib/gpattern.h
+  /usr/include/glib-2.0/glib/gpoll.h
   /usr/include/glib-2.0/glib/gprimes.h
   /usr/include/glib-2.0/glib/gprintf.h
   /usr/include/glib-2.0/glib/gqsort.h
@@ -385,6 +386,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/gio/index.sgml
   /usr/share/gtk-doc/html/gio/ix01.html
   /usr/share/gtk-doc/html/gio/ix02.html
+  /usr/share/gtk-doc/html/gio/ix03.html
   /usr/share/gtk-doc/html/gio/left.png
   /usr/share/gtk-doc/html/gio/migrating.html
   /usr/share/gtk-doc/html/gio/pt01.html
@@ -493,6 +495,7 @@ Files included in the binary packages:
   /usr/share/gtk-doc/html/glib/ix09.html
   /usr/share/gtk-doc/html/glib/ix10.html
   /usr/share/gtk-doc/html/glib/ix11.html
+  /usr/share/gtk-doc/html/glib/ix12.html
   /usr/share/gtk-doc/html/glib/left.png
   /usr/share/gtk-doc/html/glib/mainloop-states.gif
   /usr/share/gtk-doc/html/glib/right.png
@@ -580,65 +583,8 @@ Files included in the binary packages:
 
 Port Notes:
 
------ version 2.18.4-1 -----
-Version bump.
-
------ version 2.18.3-1 -----
-Version bump for GNOME 2.24.
-
------ version 2.16.6-1 -----
-Version bump.
-
------ version 2.16.5-1 -----
-Version bump.
-
------ version 2.16.4-1 -----
-Version bump.
-
------ version 2.16.3-1 -----
-Version bump for GNOME 2.22.
-
------ version 2.14.6-1 -----
-Version bump.
-
------ version 2.14.5-1 -----
-Version bump for GNOME 2.20.3.
-
------ version 2.14.4-1 -----
-Version bump for GNOME 2.20.  Depends on >=pcre-7.4-2.
-
------ version 2.12.13-1 -----
-Version bump.
-
------ version 2.12.12-2 -----
-Fixed _g_module_symbol to load symbols of dependencies, see
-http://bugzilla.gnome.org/show_bug.cgi?id=449562 for details.
-
------ version 2.12.12-1 -----
-Version bump.
-Fixed _g_module_build_path to prevent adding ".dll" suffix 
-if already present.
-
------ version 2.12.11-1 -----
-Version bump.
-
------ version 2.12.9-1 -----
-Version bump.
-
------ version 2.12.7-1 -----
-Version bump.
-
------ version 2.12.4-1 -----
-Version bump for GNOME 2.16.  Requires libintl8.
-
------ version 2.10.3-1 -----
-Version bump.
-
------ version 2.10.2-1 -----
-Version bump for GNOME 2.14.
-
------ version 2.8.6-1 -----
-Version bump by new Cygwin maintainer.
+----- version 2.20.0-1 -----
+Initial release of GNOME 2.26 for Cygwin 1.7.
 
 
 Cygwin port maintained by:
