@@ -6,7 +6,7 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.7.0-45
+  cygwin-1.7.0-48
   libfam0-0.1.10-10
   libgcc4-4.3.2-2
   libiconv2-1.12-10
@@ -39,16 +39,16 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2.0-2.20.1-X-src.tar.bz2
+  unpack glib2.0-2.20.3-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2.0-2.20.1-X.cygport all
+  cygport ./glib2.0-2.20.3-X.cygport all
 
 This will create:
-  /usr/src/glib2.0-2.20.1-X-src.tar.bz2
-  /usr/src/libglib2.0_0-2.20.1-X.tar.bz2
-  /usr/src/libglib2.0-devel-2.20.1-X.tar.bz2
+  /usr/src/glib2.0-2.20.3-X-src.tar.bz2
+  /usr/src/libglib2.0_0-2.20.3-X.tar.bz2
+  /usr/src/libglib2.0-devel-2.20.3-X.tar.bz2
 
 -------------------------------------------
 
@@ -582,6 +582,9 @@ Files included in the binary packages:
 ------------------
 
 Port Notes:
+
+----- version 2.20.3-1 -----
+Version bump.
 
 ----- version 2.20.1-1 -----
 Version bump.
