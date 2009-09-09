@@ -10,6 +10,8 @@ PATCH_URI="2.16-gmodule.patch
            2.20-not-win32.patch
            2.20-cygwin17.patch"
 
+DISTCLEANFILES="gmodule/gmodule-cygwin.c"
+
 # syslog-ng needs a static libglib-2.0
 CYGCONF_ARGS="
 	--enable-static
