@@ -19,6 +19,8 @@ CYGCONF_ARGS="
 	--with-libiconv=gnu
 	--with-pcre=system
 	--with-threads=posix
+	ac_cv_header_winsock2_h=no
+	ac_cv_header_mswsock_h=no
 "
 
 PKG_NAMES="${PN} lib${PN}_0 lib${PN}-devel"
