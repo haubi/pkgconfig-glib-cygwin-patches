@@ -7,7 +7,7 @@ HOMEPAGE="http://www.gtk.org/"
 
 PATCH_URI="2.16-gmodule.patch
            2.16-tests.patch
-           2.20-not-win32.patch
+           2.22.4-not-win32.patch
            2.20-cygwin17.patch"
 
 DISTCLEANFILES="gmodule/gmodule-cygwin.c"
@@ -22,6 +22,7 @@ CYGCONF_ARGS="
 	ac_cv_header_winsock2_h=no
 	ac_cv_header_mswsock_h=no
 "
+MAKEOPTS+=" XATTR_LIBS= "
 
 PKG_NAMES="${PN} lib${PN}_0 lib${PN}-devel"
 libglib2_0_0_CONTENTS='usr/bin/*.dll usr/lib/gio/ usr/share/doc/ usr/share/locale/'

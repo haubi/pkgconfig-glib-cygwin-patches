@@ -1,3 +1,14 @@
+--- origsrc/glib-2.22.4/gio/giomodule.c	2009-11-01 13:57:57.000000000 -0600
++++ src/glib-2.22.4/gio/giomodule.c	2010-01-29 04:07:54.798013900 -0600
+@@ -297,7 +297,7 @@ extern GType _g_win32_volume_monitor_get
+ extern GType g_win32_directory_monitor_get_type (void);
+ extern GType _g_winhttp_vfs_get_type (void);
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 
+ #include <windows.h>
+ 
 --- origsrc/glib-2.20.0/gio/tests/live-g-file.c	2009-03-12 23:09:51.000000000 -0500
 +++ src/glib-2.20.0/gio/tests/live-g-file.c	2009-03-14 22:14:36.578125000 -0500
 @@ -1124,7 +1124,7 @@ main (int argc, char *argv[])
