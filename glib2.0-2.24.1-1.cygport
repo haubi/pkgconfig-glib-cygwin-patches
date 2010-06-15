@@ -5,9 +5,9 @@ inherit gnome2
 DESCRIPTION="GNOME core C function library"
 HOMEPAGE="http://www.gtk.org/"
 
-PATCH_URI="2.16-gmodule.patch
+PATCH_URI="2.24.1-gmodule.patch
            2.16-tests.patch
-           2.22.4-not-win32.patch
+           2.24.1-not-win32.patch
            2.20-cygwin17.patch"
 
 DISTCLEANFILES="gmodule/gmodule-cygwin.c"

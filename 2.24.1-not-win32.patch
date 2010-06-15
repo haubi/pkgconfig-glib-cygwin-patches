@@ -1,0 +1,342 @@
+--- origsrc/glib-2.24.1/configure.in	2010-05-02 18:58:58.000000000 -0500
++++ src/glib-2.24.1/configure.in	2010-06-14 22:00:16.325353000 -0500
+@@ -2707,9 +2707,6 @@ dnl *** Win32 API libs ***
+ dnl **********************
+ 
+ case $host in
+-  *-*-cygwin*)
+-	G_LIBS_EXTRA="-luser32 -lkernel32"
+-    ;;
+   *-*-mingw*)
+ 	G_LIBS_EXTRA="-lws2_32 -lole32"
+     ;;
+--- origsrc/glib-2.24.1/gio/giomodule.c	2010-05-02 18:58:59.000000000 -0500
++++ src/glib-2.24.1/gio/giomodule.c	2010-06-14 22:03:22.256987600 -0500
+@@ -465,7 +465,7 @@ extern GType _g_win32_volume_monitor_get
+ extern GType g_win32_directory_monitor_get_type (void);
+ extern GType _g_winhttp_vfs_get_type (void);
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 
+ #include <windows.h>
+ 
+--- origsrc/glib-2.24.1/gio/tests/live-g-file.c	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/gio/tests/live-g-file.c	2010-06-14 22:03:22.263988000 -0500
+@@ -1142,7 +1142,7 @@ main (int argc, char *argv[])
+ 	  write_test = TRUE;
+ 	  only_create_struct = FALSE;
+ 	  target_path = DEFAULT_TEST_DIR;
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 	  posix_compat = FALSE;
+ #else
+ 	  posix_compat = TRUE;
+--- origsrc/glib-2.24.1/glib/gatomic.c	2009-03-31 18:04:20.000000000 -0500
++++ src/glib-2.24.1/glib/gatomic.c	2010-06-14 22:03:22.270988400 -0500
+@@ -777,7 +777,7 @@ g_atomic_int_add (volatile gint G_GNUC_M
+ #  define DEFINE_WITH_MUTEXES
+ # endif /* G_ATOMIC_* */
+ #else /* !__GNUC__ */
+-# ifdef G_PLATFORM_WIN32
++# ifdef G_OS_WIN32
+ #  define DEFINE_WITH_WIN32_INTERLOCKED
+ # else
+ #  define DEFINE_WITH_MUTEXES
+--- origsrc/glib-2.24.1/glib/gconvert.c	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/glib/gconvert.c	2010-06-14 22:03:22.275988700 -0500
+@@ -38,9 +38,6 @@
+ 
+ #ifdef G_OS_WIN32
+ #include "win_iconv.c"
+-#endif
+-
+-#ifdef G_PLATFORM_WIN32
+ #define STRICT
+ #include <windows.h>
+ #undef STRICT
+@@ -1133,7 +1130,7 @@ g_locale_from_utf8 (const gchar *utf8str
+ 		      charset, "UTF-8", bytes_read, bytes_written, error);
+ }
+ 
+-#ifndef G_PLATFORM_WIN32
++#ifndef G_OS_WIN32
+ 
+ typedef struct _GFilenameCharsetCache GFilenameCharsetCache;
+ 
+@@ -1249,7 +1246,7 @@ g_get_filename_charsets (G_CONST_RETURN
+   return cache->is_utf8;
+ }
+ 
+-#else /* G_PLATFORM_WIN32 */
++#else /* G_OS_WIN32 */
+ 
+ gboolean
+ g_get_filename_charsets (G_CONST_RETURN gchar ***filename_charsets) 
+@@ -1278,7 +1275,7 @@ g_get_filename_charsets (G_CONST_RETURN
+ #endif
+ }
+ 
+-#endif /* G_PLATFORM_WIN32 */
++#endif /* G_OS_WIN32 */
+ 
+ static gboolean
+ get_filename_charset (const gchar **filename_charset)
+--- origsrc/glib-2.24.1/glib/glib.h	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/glib/glib.h	2010-06-14 22:01:11.406503400 -0500
+@@ -88,7 +88,7 @@
+ #include <glib/gutils.h>
+ #include <glib/gvarianttype.h>
+ #include <glib/gvariant.h>
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ #include <glib/gwin32.h>
+ #endif
+ 
+--- origsrc/glib-2.24.1/glib/gutf8.c	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/glib/gutf8.c	2010-06-14 22:03:22.282989100 -0500
+@@ -29,7 +29,7 @@
+ 
+ #include "glib.h"
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ #include <stdio.h>
+ #define STRICT
+ #include <windows.h>
+--- origsrc/glib-2.24.1/glib/gutils.c	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/glib/gutils.c	2010-06-14 22:03:22.288989500 -0500
+@@ -73,7 +73,7 @@
+ #define G_PATH_LENGTH   2048
+ #endif
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ #  define STRICT		/* Strict typing, please */
+ #  include <windows.h>
+ #  undef STRICT
+@@ -82,9 +82,6 @@
+ #    define GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS 4
+ #  endif
+ #  include <lmcons.h>		/* For UNLEN */
+-#endif /* G_PLATFORM_WIN32 */
+-
+-#ifdef G_OS_WIN32
+ #  include <direct.h>
+ #  include <shlobj.h>
+    /* older SDK (e.g. msvc 5.0) does not have these*/
+@@ -126,7 +123,7 @@ const guint glib_micro_version = GLIB_MI
+ const guint glib_interface_age = GLIB_INTERFACE_AGE;
+ const guint glib_binary_age = GLIB_BINARY_AGE;
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 
+ static HMODULE glib_dll = NULL;
+ 
+@@ -827,7 +824,7 @@ g_path_skip_root (const gchar *file_name
+ {
+   g_return_val_if_fail (file_name != NULL, NULL);
+   
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+   /* Skip \\server\share or //server/share */
+   if (G_IS_DIR_SEPARATOR (file_name[0]) &&
+       G_IS_DIR_SEPARATOR (file_name[1]) &&
+@@ -837,13 +834,11 @@ g_path_skip_root (const gchar *file_name
+       gchar *p;
+ 
+       p = strchr (file_name + 2, G_DIR_SEPARATOR);
+-#ifdef G_OS_WIN32
+       {
+ 	gchar *q = strchr (file_name + 2, '/');
+ 	if (p == NULL || (q != NULL && q < p))
+ 	  p = q;
+       }
+-#endif
+       if (p &&
+ 	  p > file_name + 2 &&
+ 	  p[1])
+@@ -3079,7 +3074,7 @@ guess_category_value (const gchar *categ
+   if ((retval != NULL) && (retval[0] != '\0'))
+     return retval;
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+   /* g_win32_getlocale() first checks for LC_ALL, LC_MESSAGES and
+    * LANG, which we already did above. Oh well. The main point of
+    * calling g_win32_getlocale() is to get the thread's locale as used
+--- origsrc/glib-2.24.1/glib/gutils.h	2010-04-13 08:33:16.000000000 -0500
++++ src/glib-2.24.1/glib/gutils.h	2010-06-14 22:03:22.294989800 -0500
+@@ -457,7 +457,7 @@ G_END_DECLS
+  * On non-Windows platforms, expands to nothing.
+  */
+ 
+-#ifndef G_PLATFORM_WIN32
++#ifndef G_OS_WIN32
+ # define G_WIN32_DLLMAIN_FOR_DLL_NAME(static, dll_name)
+ #else
+ # define G_WIN32_DLLMAIN_FOR_DLL_NAME(static, dll_name)			\
+@@ -485,6 +485,6 @@ DllMain (HINSTANCE hinstDLL,						\
+ 
+ #endif	/* !G_DISABLE_DEPRECATED */
+ 
+-#endif /* G_PLATFORM_WIN32 */
++#endif /* G_OS_WIN32 */
+ 
+ #endif /* __G_UTILS_H__ */
+--- origsrc/glib-2.24.1/glib/gwin32.h	2009-03-31 18:04:20.000000000 -0500
++++ src/glib-2.24.1/glib/gwin32.h	2010-06-14 22:03:22.301990200 -0500
+@@ -33,7 +33,7 @@
+ 
+ #include <glib/gtypes.h>
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ 
+ G_BEGIN_DECLS
+ 
+@@ -41,8 +41,6 @@ G_BEGIN_DECLS
+ #define MAXPATHLEN 1024
+ #endif
+ 
+-#ifdef G_OS_WIN32
+-
+ /*
+  * To get prototypes for the following POSIXish functions, you have to
+  * include the indicated non-POSIX headers. The functions are defined
+@@ -67,7 +65,6 @@ G_BEGIN_DECLS
+  */
+ gint		g_win32_ftruncate	(gint		 f,
+ 					 guint		 size);
+-#endif /* G_OS_WIN32 */
+ 
+ /* The MS setlocale uses locale names of the form "English_United
+  * States.1252" etc. We want the Unixish standard form "en", "zh_TW"
+@@ -109,6 +106,6 @@ gchar*          g_win32_locale_filename_
+ 
+ G_END_DECLS
+ 
+-#endif	 /* G_PLATFORM_WIN32 */
++#endif	 /* G_OS_WIN32 */
+ 
+ #endif /* __G_WIN32_H__ */
+--- origsrc/glib-2.24.1/glib/libcharset/localcharset.c	2009-03-31 18:04:20.000000000 -0500
++++ src/glib-2.24.1/glib/libcharset/localcharset.c	2010-06-14 22:06:07.008410900 -0500
+@@ -46,10 +46,6 @@
+ #   include <locale.h>
+ #  endif
+ # endif
+-# ifdef __CYGWIN__
+-#  define WIN32_LEAN_AND_MEAN
+-#  include <windows.h>
+-# endif
+ #elif defined WIN32_NATIVE
+ # define WIN32_LEAN_AND_MEAN
+ # include <windows.h>
+@@ -111,7 +107,7 @@ _g_locale_get_charset_aliases (void)
+   cp = charset_aliases;
+   if (cp == NULL)
+     {
+-#if !(defined VMS || defined WIN32_NATIVE || defined __CYGWIN__)
++#if !(defined VMS || defined WIN32_NATIVE)
+       FILE *fp;
+       const char *dir;
+       const char *base = "charset.alias";
+@@ -237,7 +233,7 @@ _g_locale_get_charset_aliases (void)
+ 	   "DECKOREAN" "\0" "EUC-KR" "\0";
+ # endif
+ 
+-# if defined WIN32_NATIVE || defined __CYGWIN__
++# if defined WIN32_NATIVE
+       /* To avoid the troubles of installing a separate file in the same
+ 	 directory as the DLL and of retrieving the DLL's directory at
+ 	 runtime, simply inline the aliases here.  */
+@@ -292,53 +288,6 @@ _g_locale_charset_raw (void)
+   /* Most systems support nl_langinfo (CODESET) nowadays.  */
+   codeset = nl_langinfo (CODESET);
+ 
+-#  ifdef __CYGWIN__
+-  /* Cygwin 2006 does not have locales.  nl_langinfo (CODESET) always
+-     returns "US-ASCII".  As long as this is not fixed, return the suffix
+-     of the locale name from the environment variables (if present) or
+-     the codepage as a number.  */
+-  if (codeset != NULL && strcmp (codeset, "US-ASCII") == 0)
+-    {
+-      const char *locale;
+-      static char buf[2 + 10 + 1];
+-
+-      locale = getenv ("LC_ALL");
+-      if (locale == NULL || locale[0] == '\0')
+-	{
+-	  locale = getenv ("LC_CTYPE");
+-	  if (locale == NULL || locale[0] == '\0')
+-	    locale = getenv ("LANG");
+-	}
+-      if (locale != NULL && locale[0] != '\0')
+-	{
+-	  /* If the locale name contains an encoding after the dot, return
+-	     it.  */
+-	  const char *dot = strchr (locale, '.');
+-
+-	  if (dot != NULL)
+-	    {
+-	      const char *modifier;
+-
+-	      dot++;
+-	      /* Look for the possible @... trailer and remove it, if any.  */
+-	      modifier = strchr (dot, '@');
+-	      if (modifier == NULL)
+-		return dot;
+-	      if (modifier - dot < sizeof (buf))
+-		{
+-		  memcpy (buf, dot, modifier - dot);
+-		  buf [modifier - dot] = '\0';
+-		  return buf;
+-		}
+-	    }
+-	}
+-
+-      /* Woe32 has a function returning the locale's codepage as a number.  */
+-      sprintf (buf, "CP%u", GetACP ());
+-      codeset = buf;
+-    }
+-#  endif
+-
+ # else
+ 
+   /* On old systems which lack it, use setlocale or getenv.  */
+--- origsrc/glib-2.24.1/tests/Makefile.am	2010-04-13 08:33:17.000000000 -0500
++++ src/glib-2.24.1/tests/Makefile.am	2010-06-14 22:03:22.305990400 -0500
+@@ -21,7 +21,9 @@ libadd_libgmodule = $(libgmodule)
+ libadd_libglib = $(libglib)
+ if PLATFORM_WIN32
+ no_undefined = -no-undefined
++endif
+ 
++if OS_WIN32
+ module_test_exp = module-test.exp
+ 
+ module-test.exp: module-test.o
+--- origsrc/glib-2.24.1/tests/testglib.c	2010-04-13 08:33:17.000000000 -0500
++++ src/glib-2.24.1/tests/testglib.c	2010-06-14 22:02:28.504913200 -0500
+@@ -744,7 +744,7 @@ test_info (void)
+       else
+         g_print ("current charset is not UTF-8: %s\n", charset);
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+       g_print ("current locale: %s\n", g_win32_getlocale ());
+ 
+       g_print ("found more.com as %s\n", g_find_program_in_path ("more.com"));
+--- origsrc/glib-2.24.1/tests/uri-test.c	2009-11-29 19:57:36.000000000 -0600
++++ src/glib-2.24.1/tests/uri-test.c	2010-06-14 22:03:22.312990800 -0500
+@@ -61,7 +61,7 @@ to_uri_tests[] = {
+   { "c:\\windows", "otherhost", NULL, G_CONVERT_ERROR_NOT_ABSOLUTE_PATH},
+ #endif
+   { "etc", "localhost", NULL, G_CONVERT_ERROR_NOT_ABSOLUTE_PATH},
+-#ifndef G_PLATFORM_WIN32
++#ifndef G_OS_WIN32
+   { "/etc/\xE5\xE4\xF6", NULL, "file:///etc/%E5%E4%F6" },
+   { "/etc/\xC3\xB6\xC3\xA4\xC3\xA5", NULL, "file:///etc/%C3%B6%C3%A4%C3%A5"},
+ #endif
