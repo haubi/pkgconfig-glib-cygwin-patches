@@ -6,9 +6,9 @@ portability wrappers, and interfaces for such runtime functionality as
 an event loop, threads, dynamic loading, and an object system.
 
 Runtime requirements:
-  cygwin-1.7.5-1
+  cygwin-1.7.7-1
   libfam0-0.1.10-10
-  libgcc4-4.3.4-3
+  libgcc1-4.5.0-1
   libiconv2-1.13.1-1
   libintl8-0.17-11
   libpcre0-8.02-1
@@ -19,11 +19,11 @@ Build requirements:
 (besides corresponding -devel packages)
   autoconf2.5-2.65-1
   automake1.11-1.11.1-1
-  cygport-0.9.84-1
+  cygport-0.10.0-1
   gawk-3.1.7-1
-  gcc4-core-4.3.4-3
+  gcc4-core-4.5.0-1
   gnome-common-2.28.0-2
-  gtk-doc-1.15-1
+  gtk-doc-1.15-2
   libtool-2.2.7a-15
   make-3.81-2
   pkg-config-0.23b-10
@@ -38,20 +38,23 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack glib2.0-2.24.1-X-src.tar.bz2
+  unpack glib2.0-2.24.2-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./glib2.0-2.24.1-X.cygport all
+  cygport ./glib2.0-2.24.2-X.cygport all
 
 This will create:
-  /usr/src/glib2.0-2.24.1-X-src.tar.bz2
-  /usr/src/libglib2.0_0-2.24.1-X.tar.bz2
-  /usr/src/libglib2.0-devel-2.24.1-X.tar.bz2
+  /usr/src/glib2.0-2.24.2-X-src.tar.bz2
+  /usr/src/libglib2.0_0-2.24.2-X.tar.bz2
+  /usr/src/libglib2.0-devel-2.24.2-X.tar.bz2
 
 -------------------------------------------
 
 Port Notes:
+
+----- version 2.24.2-1 -----
+Version bump.
 
 ----- version 2.24.1-1 -----
 Version bump for GNOME 2.30.
