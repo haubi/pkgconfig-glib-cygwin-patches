@@ -1,0 +1,46 @@
+ORIG_PN="glib"
+
+inherit gnome2
+
+DESCRIPTION="GNOME core C function library"
+HOMEPAGE="http://www.gtk.org/"
+
+PATCH_URI="
+	2.24.1-gmodule.patch
+	2.16-tests.patch
+	2.27.2-not-win32.patch
+	2.27.2-cygwin-strsignal.patch
+"
+
+DISTCLEANFILES="gmodule/gmodule-cygwin.c"
+
+# syslog-ng needs a static libglib-2.0
+CYGCONF_ARGS="
+	--enable-static
+	--disable-visibility
+	--with-libiconv=gnu
+	--with-pcre=system
+	--with-threads=posix
+	ac_cv_header_winsock2_h=no
+	ac_cv_header_mswsock_h=no
+"
+MAKEOPTS+=" XATTR_LIBS= "
+
+PKG_NAMES="${PN} lib${PN}_0 lib${PN}-devel"
+libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
+                       usr/bin/gobject-query.exe usr/bin/gsettings.exe
+                       usr/lib/gio/ usr/share/doc/ usr/share/locale/
+                       usr/share/man/man1/gdbus.* usr/share/man/man1/gio*
+                       usr/share/man/man1/gobject* usr/share/man/man1/gsettings.*"
+libglib2_0_devel_CONTENTS="--exclude=modules usr/bin/glib-* usr/bin/gtester*
+                           usr/include/ usr/lib/ usr/share/aclocal/
+                           usr/share/glib-2.0/ usr/share/gtk-doc/
+                           usr/share/man/man1/glib-* usr/share/man/man1/gtester*"
+PKG_IGNORE="usr/share/gdb/"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	rm -f ${D}/usr/lib/charset.alias
+}
