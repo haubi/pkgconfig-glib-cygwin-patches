@@ -26,13 +26,16 @@ CYGCONF_ARGS="
 "
 MAKEOPTS+=" XATTR_LIBS= "
 
-PKG_NAMES="${PN} lib${PN}_0 lib${PN}-devel"
+PKG_NAMES="lib${PN}_0 lib${PN}-devel"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
-                       usr/bin/gobject-query.exe usr/bin/gsettings.exe
+                       usr/bin/glib-compile-schemas.exe usr/bin/gobject-query.exe
+                       usr/bin/gsettings.exe
                        usr/lib/gio/ usr/share/doc/ usr/share/locale/
                        usr/share/man/man1/gdbus.* usr/share/man/man1/gio*
+                       usr/share/man/man1/glib-compile-schemas*
                        usr/share/man/man1/gobject* usr/share/man/man1/gsettings.*"
-libglib2_0_devel_CONTENTS="--exclude=modules usr/bin/glib-* usr/bin/gtester*
+libglib2_0_devel_CONTENTS="--exclude=modules --exclude=glib-compile-schemas.[^html]*
+                           usr/bin/glib-* usr/bin/gtester*
                            usr/include/ usr/lib/ usr/share/aclocal/
                            usr/share/glib-2.0/ usr/share/gtk-doc/
                            usr/share/man/man1/glib-* usr/share/man/man1/gtester*"
