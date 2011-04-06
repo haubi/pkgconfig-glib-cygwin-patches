@@ -11,6 +11,7 @@ PATCH_URI="
 	2.27.2-not-win32.patch
 	2.27.2-cygwin-strsignal.patch
 	2.28.1-gtk-doc-images.patch
+	2.28.5-gcredentials-cygwin.patch
 "
 
 DISTCLEANFILES="gmodule/gmodule-cygwin.c"
