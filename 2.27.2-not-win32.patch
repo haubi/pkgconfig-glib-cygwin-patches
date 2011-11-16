@@ -32,17 +32,6 @@
  	  posix_compat = FALSE;
  #else
  	  posix_compat = TRUE;
---- origsrc/glib-2.27.2/glib/gatomic.c	2010-09-04 23:20:56.000000000 -0500
-+++ src/glib-2.27.2/glib/gatomic.c	2010-11-04 14:53:53.632033900 -0500
-@@ -814,7 +814,7 @@ g_atomic_int_add (volatile gint G_GNUC_M
- #  define DEFINE_WITH_MUTEXES
- # endif /* G_ATOMIC_* */
- #else /* !__GNUC__ */
--# ifdef G_PLATFORM_WIN32
-+# ifdef G_OS_WIN32
- #  define DEFINE_WITH_WIN32_INTERLOCKED
- # else
- #  define DEFINE_WITH_MUTEXES
 --- origsrc/glib-2.27.2/glib/gconvert.c	2010-09-13 08:40:53.000000000 -0500
 +++ src/glib-2.27.2/glib/gconvert.c	2010-11-04 14:53:53.647634000 -0500
 @@ -33,9 +33,6 @@
@@ -341,9 +330,9 @@
 --- origsrc/glib-2.27.2/tests/testglib.c	2010-10-16 22:31:23.000000000 -0500
 +++ src/glib-2.27.2/tests/testglib.c	2010-11-04 14:53:53.694434000 -0500
 @@ -744,7 +744,7 @@ test_info (void)
-       else
-         g_print ("current charset is not UTF-8: %s\n", charset);
  
+   if (g_test_verbose())
+     {
 -#ifdef G_PLATFORM_WIN32
 +#ifdef G_OS_WIN32
        g_print ("current locale: %s\n", g_win32_getlocale ());

@@ -10,11 +10,18 @@ PATCH_URI="
 	2.16-tests.patch
 	2.27.2-not-win32.patch
 	2.27.2-cygwin-strsignal.patch
-	2.28.1-gtk-doc-images.patch
 	2.28.5-gcredentials-cygwin.patch
 "
 
-DISTCLEANFILES="gmodule/gmodule-cygwin.c"
+DEPEND="${GNOME2_DEPEND}
+	gettext
+	gettext-devel
+	libfam-devel
+	libiconv
+	libpcre-devel
+	zlib-devel"
+
+DISTCLEANFILES="gmodule/gmodule-cygwin.c gio/gdbus-2.0/codegen/config.py"
 
 # syslog-ng needs a static libglib-2.0
 CYGCONF_ARGS="
@@ -26,7 +33,6 @@ CYGCONF_ARGS="
 	ac_cv_header_winsock2_h=no
 	ac_cv_header_mswsock_h=no
 "
-MAKEOPTS+=" XATTR_LIBS= "
 
 PKG_NAMES="lib${PN}_0 lib${PN}-devel"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
@@ -38,9 +44,10 @@ libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymod
                        usr/share/man/man1/gobject* usr/share/man/man1/gsettings.*"
 libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas
                            --exclude=glib-compile-schemas.[^html]*
-                           usr/bin/glib-* usr/bin/gtester*
+                           usr/bin/gdbus-codegen usr/bin/glib-* usr/bin/gtester*
                            usr/include/ usr/lib/ usr/share/aclocal/
                            usr/share/glib-2.0/ usr/share/gtk-doc/
+                           usr/share/man/man1/gdbus-codegen*
                            usr/share/man/man1/glib-* usr/share/man/man1/gtester*"
 PKG_IGNORE="usr/share/gdb/"
 
