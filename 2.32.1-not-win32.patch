@@ -10,6 +10,17 @@
    *-*-mingw*)
  	G_LIBS_EXTRA="-lws2_32 -lole32"
      ;;
+--- origsrc/glib-2.32.1/docs/reference/gio/Makefile.am	2012-03-11 19:42:39.000000000 -0500
++++ src/glib-2.32.1/docs/reference/gio/Makefile.am	2012-04-30 04:02:06.244723100 -0500
+@@ -77,6 +77,8 @@ IGNORE_HFILES = \
+ 	gunixvolume.h			\
+ 	gunixvolumemonitor.h		\
+ 	gwin32appinfo.h			\
++	gwin32inputstream.h		\
++	gwin32outputstream.h		\
+ 	gwin32mount.h			\
+ 	gwin32resolver.h		\
+ 	gwin32volumemonitor.h
 --- origsrc/glib-2.27.2/gio/giomodule.c	2010-10-16 22:31:23.000000000 -0500
 +++ src/glib-2.27.2/gio/giomodule.c	2010-11-04 14:53:53.616433900 -0500
 @@ -478,7 +478,7 @@ extern GType _g_winhttp_vfs_get_type (vo
@@ -32,6 +43,28 @@
  	  posix_compat = FALSE;
  #else
  	  posix_compat = TRUE;
+--- origsrc/glib-2.32.1/glib/gatomic.c	2012-03-11 19:42:41.000000000 -0500
++++ src/glib-2.32.1/glib/gatomic.c	2012-04-30 02:16:33.314500200 -0500
+@@ -464,7 +464,7 @@ gsize
+   return g_atomic_pointer_xor ((volatile gpointer *) atomic, val);
+ }
+ 
+-#elif defined (G_PLATFORM_WIN32)
++#elif defined (G_OS_WIN32)
+ 
+ #include <windows.h>
+ #if !defined(_M_AMD64) && !defined (_M_IA64) && !defined(_M_X64)
+--- origsrc/glib-2.32.1/glib/gcharset.c	2012-03-11 19:42:41.000000000 -0500
++++ src/glib-2.32.1/glib/gcharset.c	2012-04-30 02:17:01.563115900 -0500
+@@ -496,7 +496,7 @@ guess_category_value (const gchar *categ
+   if ((retval != NULL) && (retval[0] != '\0'))
+     return retval;
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+   /* g_win32_getlocale() first checks for LC_ALL, LC_MESSAGES and
+    * LANG, which we already did above. Oh well. The main point of
+    * calling g_win32_getlocale() is to get the thread's locale as used
 --- origsrc/glib-2.27.2/glib/gconvert.c	2010-09-13 08:40:53.000000000 -0500
 +++ src/glib-2.27.2/glib/gconvert.c	2010-11-04 14:53:53.647634000 -0500
 @@ -33,9 +33,6 @@
@@ -71,12 +104,39 @@
  
  static gboolean
  get_filename_charset (const gchar **filename_charset)
+--- origsrc/glib-2.32.1/glib/gfileutils.c	2012-03-11 19:42:41.000000000 -0500
++++ src/glib-2.32.1/glib/gfileutils.c	2012-04-30 02:17:19.313131200 -0500
+@@ -2176,7 +2176,7 @@ g_path_skip_root (const gchar *file_name
+ {
+   g_return_val_if_fail (file_name != NULL, NULL);
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+   /* Skip \\server\share or //server/share */
+   if (G_IS_DIR_SEPARATOR (file_name[0]) &&
+       G_IS_DIR_SEPARATOR (file_name[1]) &&
+@@ -2186,7 +2186,6 @@ g_path_skip_root (const gchar *file_name
+       gchar *p;
+       p = strchr (file_name + 2, G_DIR_SEPARATOR);
+ 
+-#ifdef G_OS_WIN32
+       {
+         gchar *q;
+ 
+@@ -2194,7 +2193,6 @@ g_path_skip_root (const gchar *file_name
+         if (p == NULL || (q != NULL && q < p))
+         p = q;
+       }
+-#endif
+ 
+       if (p && p > file_name + 2 && p[1])
+         {
 --- origsrc/glib-2.27.2/glib/glib.h	2010-09-17 17:01:03.000000000 -0500
 +++ src/glib-2.27.2/glib/glib.h	2010-11-04 14:53:53.647634000 -0500
 @@ -90,7 +90,7 @@
- #include <glib/gutils.h>
- #include <glib/gvarianttype.h>
  #include <glib/gvariant.h>
+ #include <glib/gversion.h>
+ #include <glib/gversionmacros.h>
 -#ifdef G_PLATFORM_WIN32
 +#ifdef G_OS_WIN32
  #include <glib/gwin32.h>
@@ -93,27 +153,26 @@
  #include <stdio.h>
  #define STRICT
  #include <windows.h>
---- origsrc/glib-2.27.2/glib/gutils.c	2010-10-29 21:36:52.000000000 -0500
-+++ src/glib-2.27.2/glib/gutils.c	2010-11-04 14:53:53.663234000 -0500
+--- origsrc/glib-2.32.1/glib/gutils.c	2012-03-11 19:42:42.000000000 -0500
++++ src/glib-2.32.1/glib/gutils.c	2012-04-30 02:13:18.139336800 -0500
 @@ -71,7 +71,7 @@
  #include "garray.h"
  #include "glibintl.h"
  
 -#ifdef G_PLATFORM_WIN32
 +#ifdef G_OS_WIN32
- #include "garray.h"
  #include "gconvert.h"
  #include "gwin32.h"
-@@ -86,7 +86,7 @@
- #define G_PATH_LENGTH   2048
  #endif
+@@ -85,16 +85,13 @@
+  * These are portable utility functions.
+  */
  
 -#ifdef G_PLATFORM_WIN32
 +#ifdef G_OS_WIN32
- #  define STRICT		/* Strict typing, please */
  #  include <windows.h>
- #  undef STRICT
-@@ -95,9 +95,6 @@
+ #  ifndef GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS
+ #    define GET_MODULE_HANDLE_EX_FLAG_UNCHANGED_REFCOUNT 2
  #    define GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS 4
  #  endif
  #  include <lmcons.h>		/* For UNLEN */
@@ -123,47 +182,15 @@
  #  include <direct.h>
  #  include <shlobj.h>
     /* older SDK (e.g. msvc 5.0) does not have these*/
-@@ -139,7 +136,7 @@ const guint glib_micro_version = GLIB_MI
- const guint glib_interface_age = GLIB_INTERFACE_AGE;
- const guint glib_binary_age = GLIB_BINARY_AGE;
+@@ -130,7 +127,7 @@
+ #include <langinfo.h>
+ #endif
  
 -#ifdef G_PLATFORM_WIN32
 +#ifdef G_OS_WIN32
  
- static HMODULE glib_dll = NULL;
- 
-@@ -840,7 +837,7 @@ g_path_skip_root (const gchar *file_name
- {
-   g_return_val_if_fail (file_name != NULL, NULL);
-   
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
-   /* Skip \\server\share or //server/share */
-   if (G_IS_DIR_SEPARATOR (file_name[0]) &&
-       G_IS_DIR_SEPARATOR (file_name[1]) &&
-@@ -850,13 +847,11 @@ g_path_skip_root (const gchar *file_name
-       gchar *p;
- 
-       p = strchr (file_name + 2, G_DIR_SEPARATOR);
--#ifdef G_OS_WIN32
-       {
- 	gchar *q = strchr (file_name + 2, '/');
- 	if (p == NULL || (q != NULL && q < p))
- 	  p = q;
-       }
--#endif
-       if (p &&
- 	  p > file_name + 2 &&
- 	  p[1])
-@@ -3160,7 +3155,7 @@ guess_category_value (const gchar *categ
-   if ((retval != NULL) && (retval[0] != '\0'))
-     return retval;
- 
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
-   /* g_win32_getlocale() first checks for LC_ALL, LC_MESSAGES and
-    * LANG, which we already did above. Oh well. The main point of
-    * calling g_win32_getlocale() is to get the thread's locale as used
+ gchar *
+ _glib_get_dll_directory (void)
 --- origsrc/glib-2.27.2/glib/gutils.h	2010-10-29 21:36:52.000000000 -0500
 +++ src/glib-2.27.2/glib/gutils.h	2010-11-04 14:53:53.678834000 -0500
 @@ -458,7 +458,7 @@ G_END_DECLS
