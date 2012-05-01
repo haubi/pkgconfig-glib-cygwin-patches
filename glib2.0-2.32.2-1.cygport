@@ -57,3 +57,5 @@ src_install() {
 
 	rm -f ${D}/usr/lib/charset.alias
 }
+
+KEEP_LA_FILES="shared"

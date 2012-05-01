@@ -21,6 +21,17 @@
  	gwin32mount.h			\
  	gwin32resolver.h		\
  	gwin32volumemonitor.h
+--- origsrc/glib-2.32.2/gio/giomodule-priv.h	2012-04-30 11:24:02.000000000 -0500
++++ src/glib-2.32.2/gio/giomodule-priv.h	2012-05-01 00:33:18.725235600 -0500
+@@ -35,7 +35,7 @@ gpointer _g_io_module_get_default (const
+ 				   const gchar         *envvar,
+ 				   GIOModuleVerifyFunc  verify_func);
+ 
+-#ifdef G_PLATFORM_WIN32
++#ifdef G_OS_WIN32
+ void *_g_io_win32_get_module (void);
+ #endif
+ 
 --- origsrc/glib-2.27.2/gio/giomodule.c	2010-10-16 22:31:23.000000000 -0500
 +++ src/glib-2.27.2/gio/giomodule.c	2010-11-04 14:53:53.616433900 -0500
 @@ -478,7 +478,7 @@ extern GType _g_winhttp_vfs_get_type (vo
