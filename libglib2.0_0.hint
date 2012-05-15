@@ -1,5 +1,5 @@
 category: Gnome Libs
-requires: dbus libfam0 libffi4 libgcc1 libiconv2 libintl8 libpcre0 zlib0 gsettings-desktop-schemas
+requires: dbus libfam0 libffi4 libgcc1 libiconv2 libintl8 libpcre1 zlib0 gsettings-desktop-schemas
 external-source: glib2.0
 sdesc: "GNOME C function library (runtime)"
 ldesc: "GLib is the low-level core library that forms the basis for projects
