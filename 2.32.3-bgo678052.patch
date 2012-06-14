@@ -1,0 +1,13 @@
+https://bugzilla.gnome.org/show_bug.cgi?id=678052
+
+--- origsrc/glib-2.32.3/glib/gmain.c	2012-05-14 16:58:06.000000000 -0500
++++ src/glib-2.32.3/glib/gmain.c	2012-06-13 20:51:12.121864700 -0500
+@@ -2976,7 +2976,7 @@ g_main_context_check (GMainContext *cont
+       return FALSE;
+     }
+ 
+-  if (context->wake_up_rec.events)
++  if (context->wake_up_rec.revents)
+     g_wakeup_acknowledge (context->wakeup);
+ 
+   /* If the set of poll file descriptors changed, bail out
