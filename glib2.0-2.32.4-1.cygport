@@ -2,7 +2,12 @@ ORIG_PN="glib"
 
 inherit gnome2
 
-DESCRIPTION="GNOME core C function library"
+CATEGORY="Gnome Libs"
+SUMMARY="GNOME core C function library"
+DESCRIPTION="GLib is the low-level core library that forms the basis for
+projects such as GTK+ and GNOME. It provides data structure handling for C,
+portability wrappers, and interfaces for such runtime functionality as
+an event loop, threads, dynamic loading, and an object system."
 HOMEPAGE="http://www.gtk.org/"
 
 PATCH_URI="
@@ -10,7 +15,6 @@ PATCH_URI="
 	2.16-tests.patch
 	2.32.1-not-win32.patch
 	2.28.5-gcredentials-cygwin.patch
-	2.32.3-bgo678052.patch
 "
 
 DEPEND="${GNOME2_DEPEND}
@@ -35,6 +39,8 @@ CYGCONF_ARGS="
 "
 
 PKG_NAMES="lib${PN}_0 lib${PN}-devel"
+libglib2_0_0_SUMMARY="${SUMMARY} (runtime)"
+libglib2_0_0_REQUIRES="dbus gsettings-desktop-schemas"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
                        usr/bin/glib-compile-schemas.exe usr/bin/gobject-query.exe
                        usr/bin/gsettings.exe usr/lib/gio/ usr/share/doc/
@@ -42,7 +48,8 @@ libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymod
                        usr/share/man/man1/gdbus.* usr/share/man/man1/gio*
                        usr/share/man/man1/glib-compile-schemas*
                        usr/share/man/man1/gobject* usr/share/man/man1/gsettings.*"
-libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas
+libglib2_0_devel_SUMMARY="${SUMMARY} (development)"
+libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas --exclude=gdb
                            --exclude=glib-compile-schemas.[^html]*
                            usr/bin/gdbus-codegen usr/bin/glib-*
                            usr/bin/gresource* usr/bin/gtester*
@@ -56,7 +63,7 @@ PKG_IGNORE="usr/share/gdb/"
 
 src_install() {
 	cd ${B}
-	cyginstall
+	cyginstall completiondir=/etc/bash_completion.d
 
 	rm -f ${D}/usr/lib/charset.alias
 }
