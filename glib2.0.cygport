@@ -1,8 +1,10 @@
 ORIG_PN="glib"
+inherit gnome2 python
 
-inherit gnome2
-
-CATEGORY="Gnome Libs"
+NAME="glib2.0"
+VERSION=2.34.3
+RELEASE=1
+CATEGORY="GNOME"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
 projects such as GTK+ and GNOME. It provides data structure handling for C,
@@ -17,7 +19,7 @@ PATCH_URI="
 	2.28.5-gcredentials-cygwin.patch
 "
 
-DEPEND="${GNOME2_DEPEND}
+DEPEND="gnome-common
 	gettext
 	gettext-devel
 	libfam-devel
@@ -67,5 +69,3 @@ src_install() {
 
 	rm -f ${D}/usr/lib/charset.alias
 }
-
-KEEP_LA_FILES="shared"
