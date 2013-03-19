@@ -36,8 +36,6 @@ CYGCONF_ARGS="
 	--with-threads=posix
 	ac_cv_header_winsock2_h=no
 	ac_cv_header_mswsock_h=no
-	LIBFFI_CFLAGS=-DHAVE_LIBFFI
-	LIBFFI_LIBS=-lffi
 "
 
 PKG_NAMES="lib${PN}_0 lib${PN}-devel"
