@@ -3,7 +3,7 @@ inherit gnome2 python
 
 NAME="glib2.0"
 VERSION=2.34.3
-RELEASE=1
+RELEASE=2
 CATEGORY="GNOME"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -45,6 +45,7 @@ libglib2_0_0_REQUIRES="dbus gsettings-desktop-schemas"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
                        usr/bin/glib-compile-schemas.exe usr/bin/gobject-query.exe
                        usr/bin/gsettings.exe usr/lib/gio/ usr/share/doc/
+                       usr/share/gdb/ usr/share/glib-2.0/gdb/
                        usr/share/glib-2.0/schemas usr/share/locale/
                        usr/share/man/man1/gdbus.* usr/share/man/man1/gio*
                        usr/share/man/man1/glib-compile-schemas*
@@ -60,11 +61,15 @@ libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas --exclude=gdb
                            usr/share/man/man1/glib-*
                            usr/share/man/man1/gresource*
                            usr/share/man/man1/gtester*"
-PKG_IGNORE="usr/share/gdb/"
 
 src_install() {
 	cd ${B}
 	cyginstall completiondir=/etc/bash_completion.d
 
 	rm -f ${D}/usr/lib/charset.alias
+
+	pushd ${D}/usr/share/gdb/auto-load
+	mv libglib* cygglib-2.0-0.dll-gdb.py
+	mv libgobject* cyggobject-2.0-0.dll-gdb.py
+	popd
 }
