@@ -30,8 +30,10 @@ DEPEND="gnome-common
 
 DISTCLEANFILES="gmodule/gmodule-cygwin.c gio/gdbus-2.0/codegen/config.py"
 
+# libelf: for gresource(1), only useful on ELF platforms
 CYGCONF_ARGS="
 	--disable-visibility
+	--disable-libelf
 	--with-libiconv=gnu
 	--with-pcre=system
 	--with-threads=posix
