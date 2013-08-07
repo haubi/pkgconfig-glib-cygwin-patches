@@ -2,7 +2,7 @@ ORIG_PN="glib"
 inherit gnome2 python
 
 NAME="glib2.0"
-VERSION=2.36.3
+VERSION=2.36.4
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
