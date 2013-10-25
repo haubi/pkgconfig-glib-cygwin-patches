@@ -3,7 +3,7 @@ inherit gnome2 python
 
 NAME="glib2.0"
 VERSION=2.36.4
-RELEASE=2
+RELEASE=3
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -17,6 +17,7 @@ PATCH_URI="
 	2.16-tests.patch
 	2.36.3-not-win32.patch
 	2.36.3-gcredentials-cygwin.patch
+	2.36.4-gmutex-cygwin.patch
 	2.36.4-goption-cygwin.patch
 	2.36.4-gspawn-cygwin.patch
 	2.36.4-gtk-doc-vpath.patch
@@ -47,7 +48,7 @@ CYGCONF_ARGS="
 	ac_cv_header_mswsock_h=no
 "
 
-PKG_NAMES="lib${PN}_0 lib${PN}-devel"
+PKG_NAMES="lib${NAME}_0 lib${NAME}-devel lib${NAME}-doc"
 libglib2_0_0_SUMMARY="${SUMMARY} (runtime)"
 libglib2_0_0_REQUIRES="gsettings-desktop-schemas"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
@@ -64,11 +65,13 @@ libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas --exclude=gdb
                            usr/bin/gdbus-codegen usr/bin/glib-*
                            usr/bin/gresource* usr/bin/gtester*
                            usr/include/ usr/lib/ usr/share/aclocal/
-                           usr/share/glib-2.0/ usr/share/gtk-doc/
+                           usr/share/glib-2.0/
                            usr/share/man/man1/gdbus-codegen*
                            usr/share/man/man1/glib-*
                            usr/share/man/man1/gresource*
                            usr/share/man/man1/gtester*"
+libglib2_0_doc_CATEGORY="Doc"
+libglib2_0_doc_CONTENTS="usr/share/gtk-doc/"
 
 src_install() {
 	cd ${B}
