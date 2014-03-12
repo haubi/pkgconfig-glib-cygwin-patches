@@ -1,21 +1,19 @@
---- origsrc/glib-2.16.5/tests/module-test.c	2008-07-01 17:30:08.000000000 -0500
-+++ src/glib-2.16.5/tests/module-test.c	2008-07-22 18:05:16.328125000 -0500
+--- origsrc/glib-2.28.2/tests/module-test.c
++++ src/glib-2.28.2/tests/module-test.c
 @@ -85,9 +85,15 @@
  
    dir = g_get_current_dir ();
  
--  plugin_a = g_strconcat (dir, G_DIR_SEPARATOR_S "libmoduletestplugin_a", 
+-  plugin_a = g_strconcat (dir, G_DIR_SEPARATOR_S "libmoduletestplugin_a", NULL);
+-  plugin_b = g_strconcat (dir, G_DIR_SEPARATOR_S "libmoduletestplugin_b", NULL);
 +#ifdef G_WITH_CYGWIN
 +#define PLUGIN_NAME ".libs/cygmoduletestplugin"
 +#else
 +#define PLUGIN_NAME "libmoduletestplugin"
 +#endif
 +
-+  plugin_a = g_strconcat (dir, G_DIR_SEPARATOR_S PLUGIN_NAME "_a", 
- 			  NULL);
--  plugin_b = g_strconcat (dir, G_DIR_SEPARATOR_S "libmoduletestplugin_b", 
-+  plugin_b = g_strconcat (dir, G_DIR_SEPARATOR_S PLUGIN_NAME "_b", 
- 			  NULL);
++  plugin_a = g_strconcat (dir, G_DIR_SEPARATOR_S PLUGIN_NAME "_a", NULL);
++  plugin_b = g_strconcat (dir, G_DIR_SEPARATOR_S PLUGIN_NAME "_b", NULL):
  
    g_free (dir);
 @@ -96,38 +102,40 @@

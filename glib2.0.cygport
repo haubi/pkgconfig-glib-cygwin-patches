@@ -2,8 +2,8 @@ ORIG_PN="glib"
 inherit gnome2 python
 
 NAME="glib2.0"
-VERSION=2.36.4
-RELEASE=4
+VERSION=2.38.2
+RELEASE=1
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -13,17 +13,14 @@ an event loop, threads, dynamic loading, and an object system."
 HOMEPAGE="http://www.gtk.org/"
 
 PATCH_URI="
-	2.24.1-gmodule.patch
-	2.16-tests.patch
+	2.38.2-gmodule-cygwin.patch
 	2.36.3-not-win32.patch
 	2.36.3-gcredentials-cygwin.patch
 	2.36.4-gmutex-cygwin.patch
 	2.36.4-goption-cygwin.patch
 	2.36.4-gspawn-cygwin.patch
-	2.36.4-gtk-doc-vpath.patch
 	2.34.3-m4macros.patch
 	2.36.3-visibility.patch
-	2.36.3-hasmntopt.patch
 	2.36.4-gutf8-cygwin.patch
 "
 #	2.36.4-gsocket-cygwin.patch  # requires abstract sockets
@@ -80,8 +77,9 @@ src_install() {
 
 	rm -f ${D}/usr/lib/charset.alias
 
-	pushd ${D}/usr/share/gdb/auto-load
-	mv libglib* cygglib-2.0-0.dll-gdb.py
-	mv libgobject* cyggobject-2.0-0.dll-gdb.py
+	pushd ${D}/usr/share/gdb/auto-load/usr
+	mkdir -p bin
+	mv lib/libglib* bin/cygglib-2.0-0.dll-gdb.py
+	mv lib/libgobject* bin/cyggobject-2.0-0.dll-gdb.py
 	popd
 }
