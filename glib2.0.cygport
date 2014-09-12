@@ -3,7 +3,7 @@ inherit gnome2 python
 
 NAME="glib2.0"
 VERSION=2.38.2
-RELEASE=3
+RELEASE=4
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -13,6 +13,7 @@ an event loop, threads, dynamic loading, and an object system."
 HOMEPAGE="http://www.gtk.org/"
 
 PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/glib2.git/plain/0001-GDBusObjectManagerClient-keep-the-manager-alive-whil.patch?h=f20
 	2.38.2-gmodule-cygwin.patch
 	2.36.3-not-win32.patch
 	2.36.3-gcredentials-cygwin.patch
@@ -22,6 +23,7 @@ PATCH_URI="
 	2.36.3-visibility.patch
 	2.36.4-gutf8-cygwin.patch
 	2.38.2-gconvert-cygwin.patch
+	2.38.2-gdb-python.patch
 "
 #	2.36.4-gsocket-cygwin.patch  # requires abstract sockets
 
@@ -48,11 +50,10 @@ CYGCONF_ARGS="
 
 PKG_NAMES="lib${NAME}_0 lib${NAME}-devel lib${NAME}-doc"
 libglib2_0_0_SUMMARY="${SUMMARY} (runtime)"
-libglib2_0_0_REQUIRES="gsettings-desktop-schemas"
+libglib2_0_0_REQUIRES="gsettings-desktop-schemas shared-mime-info"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
                        usr/bin/glib-compile-schemas.exe usr/bin/gobject-query.exe
                        usr/bin/gsettings.exe usr/lib/gio/ usr/share/doc/
-                       usr/share/gdb/ usr/share/glib-2.0/gdb/
                        usr/share/glib-2.0/schemas usr/share/locale/
                        usr/share/man/man1/gdbus.* usr/share/man/man1/gio*
                        usr/share/man/man1/glib-compile-schemas*
@@ -70,6 +71,7 @@ libglib2_0_devel_CONTENTS="--exclude=modules --exclude=schemas --exclude=gdb
                            usr/share/man/man1/gtester*"
 libglib2_0_doc_CATEGORY="Doc"
 libglib2_0_doc_CONTENTS="usr/share/gtk-doc/"
+glib2_0_debuginfo_CONTENTS+=" usr/share/glib-2.0/gdb/"
 
 src_install() {
 	cd ${B}
@@ -82,4 +84,6 @@ src_install() {
 	mv lib/libglib* bin/cygglib-2.0-0.dll-gdb.py
 	mv lib/libgobject* bin/cyggobject-2.0-0.dll-gdb.py
 	popd
+
+	python_optimize /usr/share/glib-2.0/gdb
 }
