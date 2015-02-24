@@ -3,7 +3,7 @@ inherit gnome2 python
 
 NAME="glib2.0"
 VERSION=2.42.1
-RELEASE=1
+RELEASE=2
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -78,10 +78,10 @@ src_install() {
 
 	rm -f ${D}/usr/lib/charset.alias
 
-	pushd ${D}/usr/share/gdb/auto-load/usr
-	mkdir -p bin
-	mv lib/libglib* bin/cygglib-2.0-0.dll-gdb.py
-	mv lib/libgobject* bin/cyggobject-2.0-0.dll-gdb.py
+	pushd ${D}/usr/share/gdb/auto-load
+	mkdir -p usr/bin
+	mv libglib* usr/bin/cygglib-2.0-0.dll-gdb.py
+	mv libgobject* usr/bin/cyggobject-2.0-0.dll-gdb.py
 	popd
 
 	python_optimize /usr/share/glib-2.0/gdb
