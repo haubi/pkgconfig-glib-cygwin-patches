@@ -2,7 +2,7 @@ ORIG_PN="glib"
 inherit gnome2 python
 
 NAME="glib2.0"
-VERSION=2.42.2
+VERSION=2.46.1
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
@@ -13,6 +13,7 @@ an event loop, threads, dynamic loading, and an object system."
 HOMEPAGE="http://www.gtk.org/"
 
 PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/glib2.git/plain/0001-GDesktopAppInfo-Do-not-set-the-DISPLAY-in-gio.patch?h=f23
 	2.38.2-gmodule-cygwin.patch
 	2.36.3-not-win32.patch
 	2.36.4-gspawn-cygwin.patch
