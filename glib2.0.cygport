@@ -3,7 +3,7 @@ inherit gnome2 python
 
 NAME="glib2.0"
 VERSION=2.46.2
-RELEASE=2
+RELEASE=3
 CATEGORY="Libs"
 SUMMARY="GNOME core C function library"
 DESCRIPTION="GLib is the low-level core library that forms the basis for
@@ -74,6 +74,9 @@ libglib2_0_doc_CONTENTS="usr/share/gtk-doc/"
 glib2_0_debuginfo_CONTENTS+=" usr/share/glib-2.0/gdb/"
 
 src_install() {
+	local giomodule_cache=/usr/lib/gio/modules/giomodule.cache
+	local gschemas_compiled=/usr/share/glib-2.0/schemas/gschemas.compiled
+
 	cd ${B}
 	cyginstall completiondir=/etc/bash_completion.d
 
@@ -86,4 +89,24 @@ src_install() {
 	popd
 
 	python_optimize /usr/share/glib-2.0/gdb
+
+
+	dodir /etc/postinstall /etc/preremove
+	cat > ${D}/etc/postinstall/zp_${NAME}.sh <<EOF
+if [ ! -f $giomodule_cache ]
+then
+    /usr/bin/gio-querymodules ${giomodule_cache%/*}
+fi
+find ${giomodule_cache%/*} -name '*.dll' -cnewer $giomodule_cache -exec /usr/bin/gio-querymodules ${giomodule_cache%/*} \;
+
+if [ ! -f $gschemas_compiled ]
+then
+    /usr/bin/glib-compile-schemas ${gschemas_compiled%/*}
+fi
+find ${gschemas_compiled%/*} -name '*.xml' -cnewer $gschemas_compiled -exec /usr/bin/glib-compile-schemas ${gschemas_compiled%/*} \;
+EOF
+	cat > ${D}/etc/preremove/${NAME}.sh <<EOF
+rm -f $giomodule_cache $gschemas_compiled
+EOF
+	chmod +x ${D}/etc/{postinstall,preremove}/*.sh
 }
