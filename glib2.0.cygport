@@ -48,7 +48,7 @@ CYGCONF_ARGS="
 
 PKG_NAMES="lib${NAME}_0 lib${NAME}-devel lib${NAME}-doc"
 libglib2_0_0_SUMMARY="${SUMMARY} (runtime)"
-libglib2_0_0_REQUIRES="desktop-file-utils gsettings-desktop-schemas shared-mime-info tzcode"
+libglib2_0_0_REQUIRES="desktop-file-utils gsettings-desktop-schemas shared-mime-info tzdata"
 libglib2_0_0_CONTENTS="etc/ usr/bin/*.dll usr/bin/gapplication.exe
                        usr/bin/gdbus.exe usr/bin/gio-querymodules.exe
                        usr/bin/glib-compile-schemas.exe usr/bin/gobject-query.exe
