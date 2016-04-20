@@ -1,5 +1,5 @@
 --- origsrc/glib-2.36.3/configure.ac	2013-08-04 20:21:20.808722600 -0500
-+++ src/glib-2.36.3/configure.ac	2013-08-04 18:30:21.852852200 -0500
++++ src/glib/configure.ac
 #@@ -1880,7 +1880,7 @@ dnl ************************************
  
  AC_MSG_CHECKING(for platform-dependent source)
@@ -41,7 +41,7 @@
  	G_LIBS_EXTRA="-lws2_32 -lole32 -lwinmm -lshlwapi"
      ;;
 --- origsrc/glib-2.36.3/glib/gatomic.c	2013-08-04 20:21:20.907728300 -0500
-+++ src/glib-2.36.3/glib/gatomic.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gatomic.c
 @@ -464,7 +464,7 @@ gsize
    return g_atomic_pointer_xor ((volatile gpointer *) atomic, val);
  }
@@ -52,7 +52,7 @@
  #include <windows.h>
  #if !defined(_M_AMD64) && !defined (_M_IA64) && !defined(_M_X64) && !(defined _MSC_VER && _MSC_VER <= 1200)
 --- origsrc/glib-2.36.3/glib/gcharset.c	2013-08-04 20:21:20.925729300 -0500
-+++ src/glib-2.36.3/glib/gcharset.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gcharset.c
 @@ -496,7 +496,7 @@ guess_category_value (const gchar *categ
    if ((retval != NULL) && (retval[0] != '\0'))
      return retval;
@@ -63,7 +63,7 @@
     * LANG, which we already did above. Oh well. The main point of
     * calling g_win32_getlocale() is to get the thread's locale as used
 --- origsrc/glib-2.36.3/glib/gconvert.c	2013-08-04 20:21:20.933729800 -0500
-+++ src/glib-2.36.3/glib/gconvert.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gconvert.c
 @@ -33,9 +33,6 @@
  
  #ifdef G_OS_WIN32
@@ -102,7 +102,7 @@
  static gboolean
  get_filename_charset (const gchar **filename_charset)
 --- origsrc/glib-2.36.3/glib/gfileutils.c	2013-08-04 20:21:20.942730300 -0500
-+++ src/glib-2.36.3/glib/gfileutils.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gfileutils.c
 @@ -2153,7 +2153,7 @@ g_path_skip_root (const gchar *file_name
  {
    g_return_val_if_fail (file_name != NULL, NULL);
@@ -129,7 +129,7 @@
        if (p && p > file_name + 2 && p[1])
          {
 --- origsrc/glib-2.36.3/glib/glib.h	2013-08-04 20:21:20.949730700 -0500
-+++ src/glib-2.36.3/glib/glib.h	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/glib.h
 @@ -96,7 +96,7 @@
  #include <glib/gvariant.h>
  #include <glib/gversion.h>
@@ -140,7 +140,7 @@
  #endif
  
 --- origsrc/glib-2.36.3/glib/gutf8.c	2013-08-04 20:21:20.984732700 -0500
-+++ src/glib-2.36.3/glib/gutf8.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gutf8.c
 @@ -27,7 +27,7 @@
  #endif
  #include <string.h>
@@ -151,7 +151,7 @@
  #define STRICT
  #include <windows.h>
 --- origsrc/glib-2.36.3/glib/gutils.c	2013-08-04 20:21:21.015734500 -0500
-+++ src/glib-2.36.3/glib/gutils.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gutils.c
 @@ -72,7 +72,7 @@
  #include "garray.h"
  #include "glibintl.h"
@@ -189,7 +189,7 @@
  gchar *
  _glib_get_dll_directory (void)
 --- origsrc/glib-2.36.3/glib/gutils.h	2013-08-04 20:21:21.067737500 -0500
-+++ src/glib-2.36.3/glib/gutils.h	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gutils.h
 @@ -350,7 +350,7 @@ g_bit_storage (gulong number)
   * On non-Windows platforms, expands to nothing.
   */
@@ -209,7 +209,7 @@
  G_END_DECLS
  
 --- origsrc/glib-2.36.3/glib/gwin32.h	2013-08-04 20:21:21.081738300 -0500
-+++ src/glib-2.36.3/glib/gwin32.h	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/gwin32.h
 @@ -33,7 +33,7 @@
  
  #include <glib/gtypes.h>
@@ -246,7 +246,7 @@
  #ifdef G_OS_WIN32
  #ifdef _WIN64
 --- origsrc/glib-2.36.3/glib/libcharset/localcharset.c	2013-08-04 20:21:21.095739100 -0500
-+++ src/glib-2.36.3/glib/libcharset/localcharset.c	2013-08-04 18:11:14.000000000 -0500
++++ src/glib/glib/libcharset/localcharset.c
 @@ -46,10 +46,6 @@
  #   include <locale.h>
  #  endif

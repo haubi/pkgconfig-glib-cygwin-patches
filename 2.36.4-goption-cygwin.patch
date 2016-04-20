@@ -1,5 +1,5 @@
 --- origsrc/glib-2.36.4/glib/goption.c	2013-08-07 09:36:32.000000000 -0500
-+++ src/glib-2.36.4/glib/goption.c	2013-10-21 13:25:01.242539100 -0500
++++ src/glib/glib/goption.c
 @@ -1671,7 +1671,7 @@ free_pending_nulls (GOptionContext *cont
  static char *
  platform_get_argv0 (void)

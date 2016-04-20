@@ -1,5 +1,5 @@
 --- origsrc/glib-2.36.3/configure.ac	2013-08-04 18:11:14.140206800 -0500
-+++ src/glib-2.36.3/configure.ac	2013-08-04 18:30:21.852852200 -0500
++++ src/glib/configure.ac
 #@@ -3584,7 +3584,7 @@ dnl visibility attributes for symbol exp
  dnl
  GLIB_HIDDEN_VISIBILITY_CFLAGS=""

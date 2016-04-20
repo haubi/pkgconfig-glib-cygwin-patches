@@ -2,7 +2,7 @@ pthread_mutex_init(&mutex, NULL) uses PTHREAD_MUTEX_ERRORCHECK, even though
 PTHREAD_MUTEX_DEFAULT == PTHREAD_MUTEX_NORMAL.
 
 --- origsrc/glib-2.36.4/glib/gthread-posix.c	2013-08-07 09:34:32.000000000 -0500
-+++ src/glib-2.36.4/glib/gthread-posix.c	2013-10-24 22:00:57.631593400 -0500
++++ src/glib/glib/gthread-posix.c
 @@ -81,7 +81,7 @@ g_thread_abort (gint         status,
  static pthread_mutex_t *
  g_mutex_impl_new (void)
