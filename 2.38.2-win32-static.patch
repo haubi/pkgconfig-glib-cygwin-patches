@@ -1,0 +1,13 @@
+With --disable-static we need GLIB_STATIC_COMPILATION even on Cygwin,
+or we get undefined symbols expected to be dllimport-ed.
+
+--- pkg-config-0.29.1/glib/configure
++++ pkg-config-0.29.1/glib/configure
+@@ -7454,6 +7454,7 @@
+ 
+ enable_static=yes
+ enable_shared=no
++glib_win32_static_compilation=yes
+ 
+ 
+ case `pwd` in
