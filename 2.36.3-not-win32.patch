@@ -1,6 +1,6 @@
 --- origsrc/glib-2.36.3/configure.ac	2013-08-04 20:21:20.808722600 -0500
 +++ src/glib-2.36.3/configure.ac	2013-08-04 18:30:21.852852200 -0500
-@@ -1880,7 +1880,7 @@ dnl ************************************
+#@@ -1880,7 +1880,7 @@ dnl ************************************
  
  AC_MSG_CHECKING(for platform-dependent source)
  case "$host" in
@@ -9,8 +9,29 @@
      PLATFORMDEP=gwin32.lo
      ;;
    *)
-@@ -2594,9 +2594,6 @@ dnl *** Win32 API libs ***
+#@@ -2594,9 +2594,6 @@ dnl *** Win32 API libs ***
  dnl **********************
+ 
+ case $host in
+-  *-*-cygwin*)
+-	G_LIBS_EXTRA="-luser32 -lkernel32"
+-    ;;
+   *-*-mingw*)
+ 	G_LIBS_EXTRA="-lws2_32 -lole32 -lwinmm -lshlwapi"
+     ;;
+--- pkg-config-0.29.patched.raw/glib/configure
++++ pkg-config-0.29/glib/configure
+@@ -24328,7 +24328,7 @@
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for platform-dependent source" >&5
+ $as_echo_n "checking for platform-dependent source... " >&6; }
+ case "$host" in
+-  *-*-cygwin*|*-*-mingw*)
++  *-*-mingw*)
+     PLATFORMDEP=gwin32.lo
+     ;;
+   *)
+@@ -25604,9 +25604,6 @@
+ 
  
  case $host in
 -  *-*-cygwin*)
