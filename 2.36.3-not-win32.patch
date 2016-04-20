@@ -19,50 +19,6 @@
    *-*-mingw*)
  	G_LIBS_EXTRA="-lws2_32 -lole32 -lwinmm -lshlwapi"
      ;;
---- origsrc/glib-2.36.3/docs/reference/gio/Makefile.am	2013-08-04 20:21:20.849725000 -0500
-+++ src/glib-2.36.3/docs/reference/gio/Makefile.am	2013-08-04 18:11:14.000000000 -0500
-@@ -77,6 +77,8 @@ IGNORE_HFILES = \
- 	gunixvolume.h			\
- 	gunixvolumemonitor.h		\
- 	gwin32appinfo.h			\
-+	gwin32inputstream.h		\
-+	gwin32outputstream.h		\
- 	gwin32mount.h			\
- 	gwin32resolver.h		\
- 	gwin32volumemonitor.h
---- origsrc/glib-2.36.3/gio/giomodule-priv.h	2013-08-04 20:21:20.877726600 -0500
-+++ src/glib-2.36.3/gio/giomodule-priv.h	2013-08-04 18:11:14.000000000 -0500
-@@ -39,7 +39,7 @@ GType    _g_io_module_get_default_type (
-                                         const gchar *envvar,
-                                         guint        is_supported_offset);
- 
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
- void *_g_io_win32_get_module (void);
- #endif
- 
---- origsrc/glib-2.36.3/gio/giomodule.c	2013-08-04 20:21:20.886727100 -0500
-+++ src/glib-2.36.3/gio/giomodule.c	2013-08-04 18:11:14.000000000 -0500
-@@ -894,7 +894,7 @@ extern GType g_network_monitor_base_get_
- extern GType _g_network_monitor_netlink_get_type (void);
- #endif
- 
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
- 
- #include <windows.h>
- 
---- origsrc/glib-2.36.3/gio/tests/live-g-file.c	2013-08-04 20:21:20.898727800 -0500
-+++ src/glib-2.36.3/gio/tests/live-g-file.c	2013-08-04 18:11:14.000000000 -0500
-@@ -1282,7 +1282,7 @@ main (int argc, char *argv[])
- 	  write_test = TRUE;
- 	  only_create_struct = FALSE;
- 	  target_path = DEFAULT_TEST_DIR;
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
- 	  posix_compat = FALSE;
- #else
- 	  posix_compat = TRUE;
 --- origsrc/glib-2.36.3/glib/gatomic.c	2013-08-04 20:21:20.907728300 -0500
 +++ src/glib-2.36.3/glib/gatomic.c	2013-08-04 18:11:14.000000000 -0500
 @@ -464,7 +464,7 @@ gsize
@@ -353,37 +309,3 @@
  # else
  
    /* On old systems which lack it, use setlocale or getenv.  */
---- origsrc/glib-2.36.3/glib/tests/uri.c	2013-08-04 20:21:21.104739600 -0500
-+++ src/glib-2.36.3/glib/tests/uri.c	2013-08-04 18:11:14.000000000 -0500
-@@ -56,7 +56,7 @@ to_uri_tests[] = {
-   { "c:\\windows", "otherhost", NULL, G_CONVERT_ERROR_NOT_ABSOLUTE_PATH},
- #endif
-   { "etc", "localhost", NULL, G_CONVERT_ERROR_NOT_ABSOLUTE_PATH},
--#ifndef G_PLATFORM_WIN32
-+#ifndef G_OS_WIN32
-   { "/etc/\xE5\xE4\xF6", NULL, "file:///etc/%E5%E4%F6" },
-   { "/etc/\xC3\xB6\xC3\xA4\xC3\xA5", NULL, "file:///etc/%C3%B6%C3%A4%C3%A5"},
- #endif
---- origsrc/glib-2.36.3/tests/Makefile.am	2013-08-04 20:21:21.109739900 -0500
-+++ src/glib-2.36.3/tests/Makefile.am	2013-08-04 18:11:14.000000000 -0500
-@@ -20,7 +20,9 @@ libadd_libgmodule = $(libgmodule)
- libadd_libglib = $(libglib)
- if PLATFORM_WIN32
- no_undefined = -no-undefined
-+endif
- 
-+if OS_WIN32
- module_test_exp = module-test.exp
- 
- module-test.exp: module-test.o
---- origsrc/glib-2.36.3/tests/testglib.c	2013-08-04 20:21:21.118740400 -0500
-+++ src/glib-2.36.3/tests/testglib.c	2013-08-04 18:11:14.000000000 -0500
-@@ -776,7 +776,7 @@ test_info (void)
- 
-   if (g_test_verbose())
-     {
--#ifdef G_PLATFORM_WIN32
-+#ifdef G_OS_WIN32
-       g_print ("current locale: %s\n", g_win32_getlocale ());
- 
-       g_print ("found more.com as %s\n", g_find_program_in_path ("more.com"));
